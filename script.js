@@ -1,34 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. FUNCIONALIDAD DEL MENÚ HAMBURGUESA ---
-
-    const menuToggle = document.querySelector(".menu-toggle");
-    const mainMenu = document.querySelector(".main-menu");
-    const header = document.querySelector("header");
-
-    menuToggle.addEventListener("click", () => {
-        // Toggle de la clase 'open' para mostrar/ocultar el menú
-        mainMenu.classList.toggle("open");
-        
-        // Opcional: Cambiar el icono del botón hamburguesa
-        menuToggle.classList.toggle("is-active"); 
-        
-        // Accesibilidad: Actualizar el atributo ARIA
-        const isExpanded = mainMenu.classList.contains("open");
-        menuToggle.setAttribute("aria-expanded", isExpanded);
-    });
-
-    // --- 2. FUNCIONALIDAD DEL MAPA DESPLEGABLE ---
+    // --- 2. FUNCIONALIDAD DEL MAPA DESPLEGABLE (Sin cambios) ---
 
     const mapToggle = document.querySelector(".map-toggle");
     const mapContent = document.querySelector(".map-content");
     const arrow = document.querySelector(".arrow");
 
     mapToggle.addEventListener("click", () => {
-        // Toggle de la clase 'map-open' (controlado por max-height en CSS)
         mapContent.classList.toggle("map-open");
-
-        // Cambia el ícono de la flecha
         if (mapContent.classList.contains("map-open")) {
             arrow.textContent = "keyboard_arrow_up";
             mapToggle.setAttribute("aria-expanded", "true");
@@ -38,41 +17,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 3. FUNCIONALIDAD DEL CARRUSEL TÁCTIL (SWIPE) ---
+    // --- 3. FUNCIONALIDAD DEL CARRUSEL (CORREGIDO PARA 1 ÍTEM A LA VEZ) ---
     
     const track = document.querySelector('.carousel-track');
     const items = Array.from(track.children);
     const dots = document.querySelectorAll('.dot');
     
-    // Si no hay elementos o solo hay uno, detener la ejecución del carrusel
     if (items.length <= 1) {
-        if (dots[0]) dots[0].classList.add('active'); // Muestra el punto si solo hay 1
+        if (dots[0]) dots[0].classList.add('active'); 
         return; 
     } 
 
-    let currentIndex = 0;
+    let currentIndex = 0; // Contará cada uno de los 3 ítems: 0, 1, 2
     let startX = 0;
     let isDragging = false;
-    let currentTranslate = 0; // Posición base del transform (en píxeles)
+    let currentTranslate = 0; 
 
-    // Necesitamos el ancho de un ítem para calcular el desplazamiento
+    // El ancho de un solo ítem (que es igual al ancho del carrusel visible)
     const itemWidth = items[0].offsetWidth; 
 
     function setSlide(index) {
-        // Limita el índice y crea un loop (circular)
+        
+        // El carrusel debe ser circular: si vas al final, vuelve al inicio (y viceversa)
         if (index < 0) index = items.length - 1; 
         if (index >= items.length) index = 0; 
 
         currentIndex = index;
 
-        // Calcula la posición exacta en PIXELES
+        // Calcula la posición en PIXELES (índice * ancho de 1 ítem)
         currentTranslate = -currentIndex * itemWidth;
 
         // Aplica la transformación
         track.style.transform = `translateX(${currentTranslate}px)`;
 
-        // Actualiza los puntos
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+        // Actualiza los puntos (un dot por ítem)
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
     }
 
     // --- Eventos Táctiles (Touch Events) ---
@@ -81,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault(); 
         startX = e.touches[0].clientX;
         isDragging = true;
-        // Deshabilita la transición mientras arrastras
         track.style.transition = 'none'; 
     });
 
@@ -89,19 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!isDragging) return;
         e.preventDefault(); 
         const deltaX = e.touches[0].clientX - startX;
-        // Muestra la nueva posición temporal (base + cuánto se ha movido el dedo)
         track.style.transform = `translateX(${currentTranslate + deltaX}px)`;
     });
 
     track.addEventListener('touchend', e => {
         isDragging = false;
-        // Restaura la transición para el efecto de "snap"
         track.style.transition = 'transform 0.5s ease-in-out'; 
         
         const endX = e.changedTouches[0].clientX;
         const deltaX = endX - startX;
 
-        // Decide si mover al siguiente slide (umbral de 50px de movimiento)
+        // Si te mueves más de 50px, cambia de diapositiva
         if (deltaX < -50) setSlide(currentIndex + 1); // Swipe Izquierda (Avanza)
         else if (deltaX > 50) setSlide(currentIndex - 1); // Swipe Derecha (Retrocede)
         else setSlide(currentIndex); // Se queda en la misma
