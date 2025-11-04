@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentTranslate = 0; // posición acumulada
 
   function setSlide(index) {
+    // Limita el índice a los elementos disponibles
+    if (index < 0) index = 0;
+    if (index >= items.length) index = items.length - 1;
+
     currentIndex = index;
     currentTranslate = -index * 100; // porcentaje acumulado
     track.style.transform = `translateX(${currentTranslate}%)`;
@@ -47,10 +51,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const endX = e.changedTouches[0].clientX;
     const deltaX = endX - startX;
 
-    if (deltaX < -50 && currentIndex < items.length - 1) currentIndex++;
-    if (deltaX > 50 && currentIndex > 0) currentIndex--;
+    if (deltaX < -50) setSlide(currentIndex + 1); // swipe a la izquierda
+    else if (deltaX > 50) setSlide(currentIndex - 1); // swipe a la derecha
+    else setSlide(currentIndex); // si no hay suficiente movimiento, vuelve al mismo
+  });
 
-    setSlide(currentIndex);
+  // Agregar función para tocar los dots
+  dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => setSlide(i));
   });
 
   setSlide(0); // inicial
