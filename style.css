@@ -169,20 +169,18 @@ header {
   width: 100%;
   max-width: 430px;
   margin: 1.5rem auto;
-  overflow: hidden; /* ¡Clave para que el carrusel funcione! */
+  overflow: hidden; /* ¡CLAVE! Oculta lo que se sale del límite */
 }
 
 .carousel-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out; /* Velocidad de la transición */
+  display: flex; /* ¡CLAVE! Coloca los ítems en fila */
+  transition: transform 0.5s ease-in-out;
 }
 
 .carousel-item {
-  min-width: 100%; /* Cada slide ocupa el 100% del carrusel */
+  min-width: 100%; /* ¡CLAVE! Cada uno toma el ancho completo de la vista */
   box-sizing: border-box;
-  text-align: center;
-  padding: 1.5rem;
-  background: rgba(128, 128, 128, 0.5);
+  /* ... resto de estilos ... */
 }
 
 .carousel-item img {

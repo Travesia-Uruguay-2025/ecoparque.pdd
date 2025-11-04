@@ -17,77 +17,82 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 3. FUNCIONALIDAD DEL CARRUSEL (CORREGIDO PARA 1 ÍTEM A LA VEZ) ---
+// Asegúrate de que este bloque de código está DENTRO de tu document.addEventListener('DOMContentLoaded', ...
+// para que todos los elementos existan.
+
+// --- 3. FUNCIONALIDAD DEL CARRUSEL (FINAL) ---
     
-    const track = document.querySelector('.carousel-track');
-    const items = Array.from(track.children);
-    const dots = document.querySelectorAll('.dot');
+const track = document.querySelector('.carousel-track');
+const items = Array.from(track.children);
+const dots = document.querySelectorAll('.dot');
+const carouselContainer = document.querySelector('.carousel'); // Seleccionamos el contenedor principal
     
-    if (items.length <= 1) {
-        if (dots[0]) dots[0].classList.add('active'); 
-        return; 
-    } 
+// Si no hay ítems o solo hay uno, salimos
+if (items.length <= 1) {
+    if (dots[0]) dots[0].classList.add('active'); 
+    return; 
+} 
 
-    let currentIndex = 0; // Contará cada uno de los 3 ítems: 0, 1, 2
-    let startX = 0;
-    let isDragging = false;
-    let currentTranslate = 0; 
+let currentIndex = 0; 
+let startX = 0;
+let isDragging = false;
+let currentTranslate = 0; 
 
-    // El ancho de un solo ítem (que es igual al ancho del carrusel visible)
-    const itemWidth = items[0].offsetWidth; 
+// CALCULO OPTIMIZADO: Usamos el ancho del contenedor principal, que es más seguro.
+// Si tu CSS es correcto (min-width: 100% en .carousel-item), el ancho del ítem debe ser igual a este.
+const itemWidth = carouselContainer.offsetWidth; 
 
-    function setSlide(index) {
-        
-        // El carrusel debe ser circular: si vas al final, vuelve al inicio (y viceversa)
-        if (index < 0) index = items.length - 1; 
-        if (index >= items.length) index = 0; 
+function setSlide(index) {
+    
+    // Lógica circular
+    if (index < 0) index = items.length - 1; 
+    if (index >= items.length) index = 0; 
 
-        currentIndex = index;
+    currentIndex = index;
 
-        // Calcula la posición en PIXELES (índice * ancho de 1 ítem)
-        currentTranslate = -currentIndex * itemWidth;
+    // Calcula la posición en PIXELES (índice * ancho del contenedor)
+    currentTranslate = -currentIndex * itemWidth;
 
-        // Aplica la transformación
-        track.style.transform = `translateX(${currentTranslate}px)`;
+    track.style.transform = `translateX(${currentTranslate}px)`;
 
-        // Actualiza los puntos (un dot por ítem)
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-    }
+    // Actualiza los puntos
+    dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
+}
 
-    // --- Eventos Táctiles (Touch Events) ---
+// Inicializa al cargar
+setSlide(0); 
 
-    track.addEventListener('touchstart', e => {
-        e.preventDefault(); 
-        startX = e.touches[0].clientX;
-        isDragging = true;
-        track.style.transition = 'none'; 
-    });
+// --- Eventos Táctiles (Touch Events) ---
 
-    track.addEventListener('touchmove', e => {
-        if (!isDragging) return;
-        e.preventDefault(); 
-        const deltaX = e.touches[0].clientX - startX;
-        track.style.transform = `translateX(${currentTranslate + deltaX}px)`;
-    });
+track.addEventListener('touchstart', e => {
+    e.preventDefault(); 
+    startX = e.touches[0].clientX;
+    isDragging = true;
+    track.style.transition = 'none'; 
+});
 
-    track.addEventListener('touchend', e => {
-        isDragging = false;
-        track.style.transition = 'transform 0.5s ease-in-out'; 
-        
-        const endX = e.changedTouches[0].clientX;
-        const deltaX = endX - startX;
+track.addEventListener('touchmove', e => {
+    if (!isDragging) return;
+    e.preventDefault(); 
+    const deltaX = e.touches[0].clientX - startX;
+    track.style.transform = `translateX(${currentTranslate + deltaX}px)`;
+});
 
-        // Si te mueves más de 50px, cambia de diapositiva
-        if (deltaX < -50) setSlide(currentIndex + 1); // Swipe Izquierda (Avanza)
-        else if (deltaX > 50) setSlide(currentIndex - 1); // Swipe Derecha (Retrocede)
-        else setSlide(currentIndex); // Se queda en la misma
-    });
+track.addEventListener('touchend', e => {
+    isDragging = false;
+    track.style.transition = 'transform 0.5s ease-in-out'; 
+    
+    const endX = e.changedTouches[0].clientX;
+    const deltaX = endX - startX;
 
-    // Control por puntos
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => setSlide(i));
-    });
+    // Mantenemos el umbral de 50px
+    if (deltaX < -50) setSlide(currentIndex + 1); // Avanza
+    else if (deltaX > 50) setSlide(currentIndex - 1); // Retrocede
+    else setSlide(currentIndex); // Se queda
+});
 
-    // Inicializa el carrusel
-    setSlide(0); 
+// Control por puntos
+dots.forEach((dot, i) => {
+    dot.addEventListener('click', () => setSlide(i));
+});
 });
