@@ -1,4 +1,4 @@
-// Sección mapa desplegable
+// ====== Sección mapa desplegable ======
 const mapToggle = document.querySelector(".map-toggle");
 const mapContent = document.querySelector(".map-content");
 const arrow = document.querySelector(".arrow");
@@ -13,7 +13,7 @@ mapToggle.addEventListener("click", () => {
   }
 });
 
-// Carrusel táctil
+// ====== Carrusel táctil ======
 document.addEventListener("DOMContentLoaded", () => {
   const track = document.querySelector(".carousel-track");
   const items = Array.from(track.children);
@@ -39,25 +39,33 @@ document.addEventListener("DOMContentLoaded", () => {
     dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
   }
 
+  // inicio del toque
   track.addEventListener("touchstart", (e) => {
     startX = e.touches[0].clientX;
     isDragging = true;
     track.style.transition = "none"; // sin animación mientras arrastra
   });
 
-  track.addEventListener("touchmove", (e) => {
-    if (!isDragging) return;
-    const deltaX = e.touches[0].clientX - startX;
-    const movePercent = (deltaX / track.offsetWidth) * 100;
-    track.style.transform = `translateX(${prevTranslate + movePercent}%)`;
-  });
+  // movimiento táctil (iPhone compatible)
+  track.addEventListener(
+    "touchmove",
+    (e) => {
+      if (!isDragging) return;
+      e.preventDefault(); // necesario para Safari / iPhone
+      const deltaX = e.touches[0].clientX - startX;
+      const movePercent = (deltaX / track.offsetWidth) * 100;
+      track.style.transform = `translateX(${prevTranslate + movePercent}%)`;
+    },
+    { passive: false } // clave para que funcione preventDefault() en iPhone
+  );
 
+  // final del toque
   track.addEventListener("touchend", (e) => {
     isDragging = false;
     const endX = e.changedTouches[0].clientX;
     const deltaX = endX - startX;
 
-    // umbral para detectar swipe
+    // umbral de movimiento
     if (deltaX < -50) setSlide(currentIndex + 1);
     else if (deltaX > 50) setSlide(currentIndex - 1);
     else setSlide(currentIndex);
@@ -68,5 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
     dot.addEventListener("click", () => setSlide(i));
   });
 
+  // Inicializar carrusel
   setSlide(0);
 });

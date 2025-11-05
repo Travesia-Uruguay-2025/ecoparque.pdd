@@ -276,6 +276,11 @@ footer {
  transition: transform 0.3s ease;
 }
 
+.carousel-track {
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
 .carousel-item {
  min-width: 100%;
  box-sizing: border-box;
