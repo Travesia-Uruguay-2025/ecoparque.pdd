@@ -340,3 +340,60 @@ footer {
 background: #E34713;
 }
 
+.hitos-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+}
+
+.hito-item {
+    display: flex;
+    align-items: center;
+    background: #000;
+    color: #fff;
+    padding: 14px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid #333;
+    transition: 0.2s;
+}
+
+.hito-item:hover {
+    background: #111;
+    transform: translateX(4px);
+}
+
+.hito-item img {
+    width: 64px;
+    height: 64px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 14px;
+}
+
+.hito-textos h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.hito-textos p {
+    margin: 2px 0 0 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.hito-item img {
+    opacity: 1 !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+}
+
+
+.highlight {
+    font-family: "Raleway", sans-serif; /* para que el bold se vea */
+    font-weight: 900; /* extra bold */
+    font-size: 35px;
+    color: #E34713; /* ← tu color */
+}
