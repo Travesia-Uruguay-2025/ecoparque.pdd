@@ -1,0 +1,280 @@
+/* --- Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "Arial", sans-serif;
+    overflow-x: hidden;
+}
+
+/* --- Barra superior --- */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    color: white;
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+}
+
+.logo-area img {
+    height: 50px;
+    object-fit: contain;
+}
+
+/* --- Botón menú hamburguesa redondeado --- */
+.menu-btn {
+    width: 44px;
+    height: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 30;
+}
+
+/* Las tres líneas */
+.menu-btn span {
+    display: block;
+    width: 28px;
+    height: 4px;
+    background-color: white;
+    border-radius: 999px; /* TERMINACIÓN REDONDEADA */
+    transition: transform 0.3s ease, opacity 0.25s ease;
+}
+
+/* Animación a “X” cuando está activo */
+.menu-btn.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+.menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.menu-btn.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* --- Menú desplegable --- */
+.menu {
+    display: none;
+    position: absolute;
+    right: 1rem;
+    top: 70px;
+    background-color: rgba(0, 0, 0, 0.9);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.menu.active {
+    display: block;
+}
+
+.menu ul {
+    list-style: none;
+}
+
+.menu a {
+    color: white;
+    display: block;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+}
+
+.menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Carrusel (fade) --- */
+.carrusel {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 5;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.titulo-superpuesto {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem 2rem;
+    text-align: left;
+    z-index: 10;
+}
+
+.titulo-superpuesto h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: #333;
+}
+
+/* --- Controles carrusel --- */
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    border: none;
+    font-size: 2.5rem;
+    color: #000;
+    cursor: pointer;
+    z-index: 10;
+    padding: 0.2rem 0.6rem;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.indicadores {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+.dot.active,
+.dot:hover {
+    background-color: white;
+}
+
+/* --- Sección Ecoparque --- */
+.ecoparque {
+    padding: 5rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.titulo-ecoparque {
+    font-size: 2.5rem;
+    color: #c62828;
+    font-weight: 700;
+}
+
+.subtitulo-ecoparque {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+.texto-ecoparque {
+    line-height: 1.7;
+    color: #333;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.texto-destacado {
+    background-color: #f2f2f2;
+    border-left: 4px solid #c62828;
+    padding: 1rem;
+    font-weight: bold;
+    margin: 1.5rem 0;
+}
+
+/* --- GIF de ancho completo --- */
+.gif-section {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+    background-color: #000;
+}
+
+.gif-responsive {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+/* --- Mapa de Google integrado --- */
+.mapa-section {
+    width: 100%;
+    text-align: center;
+    padding: 40px 0;
+    background-color: #f3f3f3;
+}
+
+.mapa-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.mapa-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Responsivo --- */
+@media (max-width: 768px) {
+    .gif-section { margin-top: 3rem; }
+    .mapa-section h2 { font-size: 1.5rem; }
+    .mapa-container iframe { height: 350px; }
+}

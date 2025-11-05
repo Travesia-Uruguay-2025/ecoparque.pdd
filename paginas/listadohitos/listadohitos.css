@@ -1,0 +1,143 @@
+/* --- 1. CONFIGURACIÓN GENERAL Y FUENTES --- */
+body {
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfdfd;
+    color: #333;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* --- 2. ENCABEZADO (HEADER) --- */
+header {
+    background-color: #000;
+    padding: 1rem 1.5rem;
+}
+
+.inner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 1.75rem;
+    color: #fff;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* --- 3. CONTENIDO PRINCIPAL (MAIN) --- */
+.content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.highlight {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #E34713;
+    margin-bottom: 1.5rem;
+}
+
+.content>p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 3rem;
+}
+
+/* --- 4. LISTA DE HITOS (MODO OSCURO) --- */
+.hitos-list {
+    display: grid;
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.hito-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.25rem;
+    background-color: #222;
+    border: 1px solid #444;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+}
+
+.hito-item:hover {
+    transform: translateY(-5px);
+    border-color: #E34713;
+}
+
+.hito-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.hito-textos h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #f5f5f5;
+}
+
+.hito-textos p {
+    font-size: 1rem;
+    color: #aaa;
+}
+
+.hito-item:hover h3 {
+    color: #E34713;
+}
+
+.hito-item:hover p {
+    color: #ccc;
+}
+
+/* --- 5. PIE DE PÁGINA --- */
+.final-text {
+    text-align: center;
+    background-color: #000;
+    color: #aaa;
+    margin-top: 4rem;
+    padding: 2.5rem 1rem;
+}
+
+.final-text p {
+    max-width: 700px;
+    margin: 0 auto;
+}
