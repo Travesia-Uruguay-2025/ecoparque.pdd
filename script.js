@@ -1,95 +1,71 @@
-document.addEventListener('DOMContentLoaded', () => {
+// --- Menú desplegable ---
+const menuBtn = document.getElementById("menu-btn");
+const menu = document.getElementById("menu");
 
-    // --- 1. FUNCIONALIDAD DEL MAPA DESPLEGABLE (Animación Suave) ---
-    
-    const mapToggle = document.querySelector(".map-toggle");
-    const mapContent = document.querySelector(".map-content");
-    const arrow = document.querySelector(".arrow");
+// Alterna el menú y la animación del ícono hamburguesa
+menuBtn.addEventListener("click", () => {
+  menu.classList.toggle("active");
+  menuBtn.classList.toggle("active"); // activa la animación del botón
+});
 
-    mapToggle.addEventListener("click", () => {
-        // Toggle de la clase 'map-open' (controlado por max-height en CSS)
-        mapContent.classList.toggle("map-open");
+// --- Carrusel automático con fade ---
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+let currentIndex = 0;
+let interval;
 
-        // Cambia el ícono de la flecha
-        if (mapContent.classList.contains("map-open")) {
-            arrow.textContent = "keyboard_arrow_up";
-            mapToggle.setAttribute("aria-expanded", "true");
-        } else {
-            arrow.textContent = "keyboard_arrow_down";
-            mapToggle.setAttribute("aria-expanded", "false");
-        }
-    });
+function showSlide(i) {
+  slides.forEach((slide, index) => {
+    slide.classList.toggle("active", index === i);
+    dots[index].classList.toggle("active", index === i);
+  });
+  currentIndex = i;
+}
 
-    // --- 2. FUNCIONALIDAD DEL CARRUSEL (Circular con Swipe Completo) ---
-    
-    const track = document.querySelector('.carousel-track');
-    const items = Array.from(track.children);
-    const dots = document.querySelectorAll('.dot');
-    const carouselContainer = document.querySelector('.carousel'); 
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % slides.length;
+  showSlide(currentIndex);
+}
 
-    if (!carouselContainer || items.length <= 1) {
-        if (dots.length > 0) dots[0].classList.add('active'); 
-        return; 
-    } 
+function startAutoSlide() {
+  interval = setInterval(nextSlide, 4000);
+}
 
-    let currentIndex = 0; 
-    let startX = 0;
-    let isDragging = false;
-    let currentTranslate = 0; 
-    const itemWidth = carouselContainer.offsetWidth; 
+document.querySelector(".next").addEventListener("click", () => {
+  nextSlide();
+  resetAutoSlide();
+});
 
-    function setSlide(index) {
-        
-        // Lógica circular (de 3 a 1, de 1 a 3)
-        if (index < 0) index = items.length - 1; 
-        if (index >= items.length) index = 0; 
+document.querySelector(".prev").addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  showSlide(currentIndex);
+  resetAutoSlide();
+});
 
-        currentIndex = index;
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => {
+    showSlide(i);
+    resetAutoSlide();
+  });
+});
 
-        // Calculamos la posición final en PÍXELES y la guardamos en currentTranslate
-        currentTranslate = -currentIndex * itemWidth; 
+function resetAutoSlide() {
+  clearInterval(interval);
+  startAutoSlide();
+}
 
-        track.style.transform = `translateX(${currentTranslate}px)`;
+showSlide(0);
+startAutoSlide();
 
-        // Actualiza los puntos
-        dots.forEach((dot, i) => dot.classList.toggle('active', i === currentIndex));
-    }
+// --- Animación GIFs al hacer scroll ---
+const gifLeft = document.querySelector(".gif-left");
+const gifRight = document.querySelector(".gif-right");
 
-    // Inicializa el carrusel
-    setSlide(0); 
-
-    // --- Eventos Táctiles (Swipe) ---
-
-    track.addEventListener('touchstart', e => {
-        e.preventDefault(); 
-        startX = e.touches[0].clientX;
-        isDragging = true;
-        track.style.transition = 'none'; 
-    });
-
-    track.addEventListener('touchmove', e => {
-        if (!isDragging) return;
-        e.preventDefault(); 
-        const deltaX = e.touches[0].clientX - startX;
-        // Movimiento temporal
-        track.style.transform = `translateX(${currentTranslate + deltaX}px)`;
-    });
-
-    track.addEventListener('touchend', e => {
-        isDragging = false;
-        track.style.transition = 'transform 0.5s ease-in-out'; 
-        
-        const endX = e.changedTouches[0].clientX;
-        const deltaX = endX - startX;
-
-        // Si el movimiento horizontal es significativo (> 50px)
-        if (deltaX < -50) setSlide(currentIndex + 1); // Avanza (Swipe Izquierda)
-        else if (deltaX > 50) setSlide(currentIndex - 1); // Retrocede (Swipe Derecha)
-        else setSlide(currentIndex); // Se queda en la misma
-    });
-
-    // Control por puntos
-    dots.forEach((dot, i) => {
-        dot.addEventListener('click', () => setSlide(i));
-    });
+window.addEventListener("scroll", () => {
+  const section = document.querySelector(".gif-section");
+  const rect = section.getBoundingClientRect();
+  if (rect.top < window.innerHeight - 100) {
+    if (gifLeft) gifLeft.classList.add("show-left");
+    if (gifRight) gifRight.classList.add("show-right");
+  }
 });
