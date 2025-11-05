@@ -391,9 +391,11 @@ background: #E34713;
 }
 
 
-.highlight {
-    font-family: "Raleway", sans-serif; /* para que el bold se vea */
-    font-weight: 900; /* extra bold */
-    font-size: 35px;
-    color: #E34713; /* ← tu color */
+.content .highlight {
+    font-family: "Raleway", sans-serif !important;
+    font-weight: 800 !important;
+    font-size: 35px !important;
+    color: #E34713 !important;
+    margin-bottom: 16px;
+    display: block;
 }
