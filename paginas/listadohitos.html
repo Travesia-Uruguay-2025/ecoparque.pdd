@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Raleway:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <title>Listado de hitos</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        header{
+            background: #000;
+            color: #fff;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 1000;
+        }
+        body{
+            padding-top: 80px;
+            font-family: "DM Sans", "Raleway", system-ui, Arial, sans-serif;
+        }
+        .logo{ color: #fff; font-weight: 700; font-size: 1rem; }
+        .menu-toggle{
+            background: transparent; border: none; cursor: pointer;
+            display: flex; flex-direction: column; gap: 4px; padding: 6px;
+        }
+        .menu-toggle span{
+            display: block; width: 22px; height: 2px; background: #fff; border-radius: 2px;
+        }
+        .final-text{
+            background: #000; color: #fff; padding: 18px 16px; text-align: center; margin-top: 28px;
+        }
+        .final-text p{ margin: 0; }
+    </style>
+</head>
+
+<body>
+<header>
+    <div class="logo">LOGO</div>
+    <button class="menu-toggle" aria-label="Abrir menú">
+        <span></span><span></span><span></span>
+    </button>
+</header>
+
+<main class="content">
+    <h2 class="highlight">Listado de hitos</h2>
+    
+    <p>El hibisco de bañado es una <strong>planta herbácea</strong> que...</p>
+<div class="hitos-list">
+
+    <a href="hito1.html" class="hito-item">
+        <img src="hibiscodebañado.png" alt="Hito 1">
+        <div class="hito-textos">
+            <h3>Hito n°1</h3>
+            <p>Hibisco de bañado</p>
+        </div>
+    </a>
+
+    <a href="hito2.html" class="hito-item">
+        <img src="hibiscodebañado.png" alt="Hito 2">
+        <div class="hito-textos">
+            <h3>Hito n°2</h3>
+            <p>(Nombre del hito)</p>
+        </div>
+    </a>
+
+    <a href="hito3.html" class="hito-item">
+        <img src="hibiscodebañado.png" alt="Hito 3">
+        <div class="hito-textos">
+            <h3>Hito n°3</h3>
+            <p>(Nombre del hito)</p>
+        </div>
+    </a>
+
+    <a href="hito4.html" class="hito-item">
+        <img src="hibiscodebañado.png" alt="Hito 4">
+        <div class="hito-textos">
+            <h3>Hito n°4</h3>
+            <p>(Nombre del hito)</p>
+        </div>
+    </a>
+
+    <a href="hito5.html" class="hito-item">
+        <img src="hibiscodebañado.png" alt="Hito 5">
+        <div class="hito-textos">
+            <h3>Hito n°5</h3>
+            <p>(Nombre del hito)</p>
+        </div>
+    </a>
+
+</div>
+
+</main>
+
+<section class="final-text">
+    <p>Este proyecto fue desarrollado en contexto de la travesía Punta del Diablo 2025</p>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
