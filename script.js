@@ -1,12 +1,20 @@
-// --- Menú desplegable ---
-const menuBtn = document.getElementById("menu-btn");
-const menu = document.getElementById("menu");
+// Botón .menu-btn
+const menuBtn = document.querySelector(".menu-btn");
+const menu = document.querySelector(".menu");
 
-// Alterna el menú y la animación del ícono hamburguesa
 menuBtn.addEventListener("click", () => {
-  menu.classList.toggle("active");
-  menuBtn.classList.toggle("active"); // activa la animación del botón
+    menuBtn.classList.toggle("active"); // animación hamburguesa → cruz
+    if(menu) menu.classList.toggle("show"); // mostrar/ocultar menú
 });
+
+// Botón .menu-toggle (si existe en otra sección)
+const menuToggle = document.querySelector(".menu-toggle");
+if(menuToggle) {
+    menuToggle.addEventListener("click", () => {
+        menuToggle.classList.toggle("open");
+        if(menu) menu.classList.toggle("show");
+    });
+}
 
 // --- Carrusel automático con fade ---
 const slides = document.querySelectorAll(".slide");

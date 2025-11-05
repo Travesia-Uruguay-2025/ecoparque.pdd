@@ -15,6 +15,8 @@ body {
 header {
     background-color: #000;
     padding: 1rem 1.5rem;
+    position: relative;
+    z-index: 40;
 }
 
 .inner-header {
@@ -23,6 +25,7 @@ header {
     align-items: center;
     max-width: 1100px;
     margin: 0 auto;
+    position: relative;
 }
 
 .logo {
@@ -32,6 +35,7 @@ header {
     color: #fff;
 }
 
+/* --- BOTÓN HAMBURGUESA --- */
 .menu-toggle {
     background: none;
     border: none;
@@ -40,6 +44,7 @@ header {
     flex-direction: column;
     gap: 5px;
     padding: 5px;
+    z-index: 30;
 }
 
 .menu-toggle span {
@@ -51,12 +56,79 @@ header {
     transition: all 0.3s ease;
 }
 
+/* Animación a cruz al abrir */
+.menu-toggle.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- MENÚ DESPLEGABLE (EMERGENTE) --- */
+.menu {
+    font-family: Raleway;
+    position: absolute;
+    top: 100%;
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    background: #111;
+    border-radius: none;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    transform-origin: top right;
+    transform: scaleY(0);
+    opacity: 0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu.show {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.menu a {
+    position: relative;
+    padding: 0.9rem 1.2rem;
+    color: #f2f2f2;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: none; /* quitamos la línea por defecto */
+}
+
+.menu a::after {
+    content: '';
+    display: block;
+    width: 98%;       /* ← longitud de la línea */
+    height: 0.5px;      /* grosor */
+    background: #E34713;
+    margin: 0 auto;   /* centrar la línea */
+    margin-top: 15px;  /* separación desde el texto */
+}
+
+
+.menu a:last-child {
+    border-bottom: none; /* sin línea en el último botón */
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.menu a.active {
+    color: #E34713;
+}
+
 /* --- 3. CONTENIDO PRINCIPAL (MAIN) --- */
 .content {
     max-width: 800px;
     margin: 2rem auto;
     padding: 0 1rem;
-    text-align: center;
+    text-align: left;
 }
 
 .highlight {
