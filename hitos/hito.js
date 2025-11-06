@@ -79,30 +79,3 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicializar carrusel
   setSlide(0);
 });
-
-// --- soporte táctil para iPhone ---
-const carouselTrack = document.querySelector('.carousel-track');
-let startX = 0;
-let currentX = 0;
-
-carouselTrack.addEventListener('touchstart', (e) => {
-  startX = e.touches[0].clientX;
-});
-
-carouselTrack.addEventListener('touchmove', (e) => {
-  currentX = e.touches[0].clientX;
-});
-
-carouselTrack.addEventListener('touchend', () => {
-  const diff = startX - currentX;
-
-  if (Math.abs(diff) > 50) { // si el deslizamiento es suficiente
-    if (diff > 0) {
-      // deslizar a la derecha -> siguiente imagen
-      moveToNextSlide();
-    } else {
-      // deslizar a la izquierda -> imagen anterior
-      moveToPrevSlide();
-    }
-  }
-});
