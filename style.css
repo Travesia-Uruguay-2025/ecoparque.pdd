@@ -9,8 +9,10 @@ html,
 body {
     width: 100%;
     height: 100%;
-    font-family: "Arial", sans-serif;
+    font-family: "DM Sans", sans-serif;
     overflow-x: hidden;
+    text-align: left;
+    color: #333;
 }
 
 /* --- Barra superior --- */
@@ -29,11 +31,11 @@ body {
 }
 
 .logo-area img {
-    height: 50px;
+    height: 60px;
     object-fit: contain;
 }
 
-/* --- Botón menú hamburguesa redondeado --- */
+/* --- Botón menú hamburguesa --- */
 .menu-btn {
     width: 44px;
     height: 36px;
@@ -44,21 +46,21 @@ body {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 6px;
+    gap: 5px;
+    padding: 5px;
     z-index: 30;
 }
 
-/* Las tres líneas */
 .menu-btn span {
     display: block;
-    width: 28px;
-    height: 4px;
+    width: 34px;
+    height: 4.5px;
     background-color: white;
-    border-radius: 999px; /* TERMINACIÓN REDONDEADA */
+    border-radius: 3px;
     transition: transform 0.3s ease, opacity 0.25s ease;
 }
 
-/* Animación a “X” cuando está activo */
+/* Animación del botón */
 .menu-btn.active span:nth-child(1) {
     transform: translateY(10px) rotate(45deg);
 }
@@ -69,52 +71,17 @@ body {
     transform: translateY(-10px) rotate(-45deg);
 }
 
-
-/* --- BOTÓN HAMBURGUESA --- */
-.menu-toggle {
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 5px;
-    z-index: 30;
-}
-
-.menu-toggle span {
-    display: block;
-    width: 28px;
-    height: 3px;
-    background-color: #fff;
-    border-radius: 3px;
-    transition: all 0.3s ease;
-}
-
-/* Animación a cruz al abrir */
-.menu-toggle.open span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-}
-.menu-toggle.open span:nth-child(2) {
-    opacity: 0;
-}
-.menu-toggle.open span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-}
-
-
-/* --- MENÚ DESPLEGABLE (EMERGENTE) --- */
+/* --- Menú emergente --- */
 .menu {
-    font-family: Raleway;
+    font-family: "Raleway", sans-serif;
     position: absolute;
     top: 100%;
     right: 1.5rem;
     display: flex;
     flex-direction: column;
     background: #111;
-    border-radius: none;
     overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
     transform-origin: top right;
     transform: scaleY(0);
     opacity: 0;
@@ -132,22 +99,22 @@ body {
     color: #f2f2f2;
     text-decoration: none;
     font-weight: 500;
-    border-bottom: none; /* quitamos la línea por defecto */
+    border-bottom: none;
+    text-align: left;
 }
 
 .menu a::after {
     content: '';
     display: block;
-    width: 98%;       /* ← longitud de la línea */
-    height: 0.5px;      /* grosor */
+    width: 98%;
+    height: 0.5px;
     background: #E34713;
-    margin: 0 auto;   /* centrar la línea */
-    margin-top: 15px;  /* separación desde el texto */
+    margin: 0 auto;
+    margin-top: 15px;
 }
 
-
-.menu a:last-child {
-    border-bottom: none; /* sin línea en el último botón */
+.menu a:last-child::after {
+    display: none;
 }
 
 .menu a:hover {
@@ -158,7 +125,8 @@ body {
 .menu a.active {
     color: #E34713;
 }
-/* --- Carrusel (fade) --- */
+
+/* --- Carrusel --- */
 .carrusel {
     position: relative;
     width: 100%;
@@ -193,23 +161,25 @@ body {
     object-fit: cover;
 }
 
+/* --- Título del carrusel --- */
 .titulo-superpuesto {
     position: absolute;
     top: 70px;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.4);
     padding: 1.5rem 2rem;
     text-align: left;
     z-index: 10;
 }
 
 .titulo-superpuesto h1 {
+    font-family: "Raleway", sans-serif;
     font-size: clamp(1.8rem, 5vw, 3rem);
-    color: #333;
+    color: #000000;
 }
 
-/* --- Controles carrusel --- */
+/* --- Controles del carrusel --- */
 .prev,
 .next {
     position: absolute;
@@ -265,33 +235,32 @@ body {
 }
 
 .titulo-ecoparque {
+    font-family: "Raleway", sans-serif;
     font-size: 2.5rem;
     color: #c62828;
     font-weight: 700;
+    text-align: left;
 }
 
 .subtitulo-ecoparque {
+    font-family: "Raleway", sans-serif;
     font-size: 1.8rem;
     font-weight: 500;
     margin-bottom: 1.5rem;
+    text-align: left;
 }
 
-.texto-ecoparque {
+.texto-ecoparque,
+p {
+    font-family: "DM Sans", sans-serif;
     line-height: 1.7;
-    color: #333;
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
+    text-align: left;
+    color: #333;
 }
 
-.texto-destacado {
-    background-color: #f2f2f2;
-    border-left: 4px solid #c62828;
-    padding: 1rem;
-    font-weight: bold;
-    margin: 1.5rem 0;
-}
-
-/* --- GIF de ancho completo --- */
+/* --- GIF --- */
 .gif-section {
     width: 100%;
     overflow: hidden;
@@ -309,32 +278,40 @@ body {
     object-fit: cover;
 }
 
-/* --- Mapa de Google integrado --- */
+/* --- Mapa --- */
 .mapa-section {
-    width: 100%;
-    text-align: center;
-    padding: 40px 0;
-    background-color: #f3f3f3;
+    text-align: left;
+    padding: 4rem 2rem;
+    background-color: #fff;
 }
 
 .mapa-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-    color: #222;
+    font-family: "Raleway", sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: #000;
 }
 
 .mapa-container {
-    width: 90%;
+    width: 100%;
     max-width: 1000px;
     margin: 0 auto;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+/* --- 5. PIE DE PÁGINA --- */
+.final-text {
+    text-align: center;
+    background-color: #000000;
+    color: #ffffff !important; /* fuerza el color blanco */
+    margin-top: 4rem;
+    padding: 2.5rem 1rem;
 }
 
-/* --- Responsivo --- */
-@media (max-width: 768px) {
-    .gif-section { margin-top: 3rem; }
-    .mapa-section h2 { font-size: 1.5rem; }
-    .mapa-container iframe { height: 350px; }
+.final-text p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #ffffff !important; /* asegura que los párrafos también sean blancos */
 }
