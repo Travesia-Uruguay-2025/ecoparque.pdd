@@ -1,290 +1,334 @@
-/* ======== RESET GENERAL ======== */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'DM Sans', Arial, sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: 'DM Sans', Arial, sans-serif;
 }
 
 body {
-  background: #fff;
-  color: #000;
-  max-width: 100%;
-  margin: 0 auto;
+background: #fff;
+color: #000;
+max-width: 430px;
+margin: auto;
 }
 
-/* ======== HEADER ======== */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #000;
-  color: #fff;
-  padding: 1rem 1.5rem;
+display: flex;
+justify-content: space-between;
+align-items: center;
+background: #000;
+color: #fff;
+padding: 1rem;
 }
 
 .logo {
-  font-weight: bold;
-  font-size: 1.8rem;
+margin-left: 10px;
+font-weight: bold;
+font-size: 1.8rem;
 }
 
 .menu-toggle {
-  width: 35px;
-  height: 28px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: none;
-  border: none;
-  cursor: pointer;
+width: 35px;
+height: 28px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+background: none;
+border: none;
+cursor: pointer;
+margin-right: 8px;
 }
 
 .menu-toggle span {
-  display: block;
-  height: 4px;
-  background-color: white;
-  border-radius: 4px;
-  transition: 0.3s;
+display: block;
+height: 4px;
+background-color: white;
+border-radius: 4px;
+transition: 0.3s;
 }
 
-/* ======== MAPA ======== */
+.menu::before {
+content: "";
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+background: rgba(0, 0, 0, 0.45);
+z-index: -1;
+}
+
+.menu li {
+list-style: none;
+padding: 1rem 0;
+border-bottom: 1px solid #E34713;
+font-size: 1.2rem;
+font-family: 'Raleway';
+font-weight: 500;
+}
+
 .map-section {
-  background: #E6E6E6;
-  padding: 1rem;
-  margin: 1.5rem auto; 
-  border-radius: 10px;
-  width: 90%;
-  max-width: 800px;
+background: #E6E6E6;
+padding: 1rem;
+width: 380px;
+margin: 1.5rem auto; 
+border-radius: 10px;
 }
 
 .map-toggle {
-  background: none;
-  border: none;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  font-weight: 500;
-  justify-content: flex-start;
-  gap: 8px;
+background: none;
+border: none;
+width: 100%;
+display: flex;
+align-items: center;
+font-weight: 500;
+justify-content: flex-start;
+gap: 8px;
 }
 
 .ubicacion-icon {
-  font-size: 28px;
-  color: #000;
+font-size: 28px;
+color: #000000;
 }
 
 .ubicacion-texto {
-  font-family: Raleway;
-  font-size: 1.1rem;
-  color: #000;
+font-family: Raleway;
+font-size: 1.1rem;
+color: #000;
 }
 
 .arrow {
-  margin-left: auto;
-  font-size: 44px;
-  color: #000;
+margin-left: auto;
+font-size: 44px;
+color: #000000;
 }
 
 .map-content {
-  display: none;
-  margin-top: 1rem;
+display: none;
+margin-top: 1rem;
+}
+
+.placeholder {
+background: #d9d9d9;
+width: 100%;
+border-radius: 10px;
+object-fit: cover;
+display: block;
 }
 
 .mapa {
-  width: 100%;
-  height: auto;
-  max-height: 400px;
-  border-radius: 10px;
-  object-fit: cover;
-}
-
-/* ======== CONTENIDO PRINCIPAL ======== */
-.content {
-  padding: 1.5rem;
-  width: 90%;
-  max-width: 800px;
-  margin: auto;
-}
-
-.content h2 {
-  font-family: Raleway;
-  font-size: 2rem;
-  line-height: 2.5rem;
-  font-weight: 550;
-}
-
-.highlight {
-  font-family: Raleway;
-  color: #E34713;
-  font-size: 2.5rem;
-  font-weight: 800;
-}
-
-.content p {
-  color: #333;
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  font-size: 1rem;
+width: 100%;
+height: 250px; 
+border-radius: 10px;
+object-fit: cover;
+display: block;
+margin: 1.5rem auto;
 }
 
 .hibiscodebañado {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
-  margin: 1.5rem 0;
+width: 100%;
+height: 250px; 
+border-radius: 10px;
+object-fit: cover;
+display: block;
+margin: 1.5rem auto;
 }
 
-/* ======== MEMORIAS / CARRUSEL ======== */
+.paisajememorias1 {
+width: 100%;
+height: 250px; 
+border-radius: 10px;
+object-fit: cover;
+display: block;
+margin: 1.5rem auto;
+}
+
+.content {
+padding: 1.5rem;
+}
+
+.content h2 {
+font-family: Raleway;
+font-size: 1.8rem;
+line-height: 2.5rem;
+font-weight: 550;
+}
+
+.highlight {
+font-family: Raleway;
+color: #E34713;
+font-size: 2.5rem;
+font-weight: 800;
+}
+
+.content p {
+color: #333;
+line-height: 1.5;
+margin-bottom: 1rem;
+}
+
 .memories {
-  width: 90%;
-  max-width: 800px;
-  margin: 2rem auto;
+padding: 1.5rem;
 }
 
 .memories h3 {
-  margin-bottom: 1rem;
-  font-family: Raleway;
-  font-weight: 700;
-  color: #000;
-  font-size: 1.6rem;
+margin-bottom: 1.5rem;
+font-family: Raleway;
+font-weight: 700;
+color: #000;
+margin-left: 22px;
+font-size: 25px;
+font-style: bold;
+}
+
+.memory-box {
+background: rgba(128, 128, 128, 0.5);
+padding: 1.5rem;
+min-height: 250px; 
+width: 100%;
+margin: 0 auto; 
+}
+
+.memory-box img {
+width: 100%;
+border-radius: 10px;
+margin-bottom: 1rem;
+height: 277px;
+}
+
+.memory-box blockquote {
+font-family: 'DM Sans';
+font-style: italic;
+font-weight: 700;
+color: #222;
+font-size: 18px;
+}
+
+.memory-box .author {
+display: block;
+color: #E34713;
+margin-top: 0.5rem;
+font-family: 'DM Sans';
+font-size: 15px;
+font-weight: 700;
+text-align: right;
+}
+
+blockquote {
+font-family: DM Sans;
+font-style: italic;
+color: #222;
+font-size: 20px;
+font-weight: 700;
+}
+
+.author {
+display: block;
+color: #E34713;
+margin-top: 0.5rem;
+font-family: DM Sans;
+font-size: 16px;
+font-weight: 700;
+margin-left: 20px;
+font-style: bold;
+}
+
+footer {
+text-align: left;
+font-size: 12px;
+padding: 1rem;
+color: #555;
+margin-left: 6px;
+}
+
+.memories {
+padding: 0; /* eliminamos el padding lateral que encoge la caja gris */
+}
+
+.memory-box {
+background: rgba(128, 128, 128, 0.5);
+width: 100%;
+padding: 1.5rem;
+min-height: 250px;
+border-radius: 0; /* si quieres que quede igual que el header */
+}
+
+.final-text {
+margin-top: 80px;
+background: #000; /* igual que el header */
+color: #fff; /* texto en blanco */
+width: 100%; /* ocupa todo el ancho del body */
+padding: 1rem 1.5rem; /* mismo padding que header y contenido */
+text-align: left; /* igual que el footer anterior */
+font-size: 12px; /* igual que antes */
 }
 
 .carousel {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
+position: relative;
+width: 100%;
+max-width: 430px;
+margin: 1.5rem auto;
+overflow: hidden;
 }
 
 .carousel-track {
-  display: flex;
-  transition: transform 0.3s ease;
-  touch-action: pan-y;
-  -webkit-overflow-scrolling: touch;
+display: flex;
+transition: transform 0.3s ease;
+}
+
+.carousel-track {
+ touch-action: pan-y;
+ -webkit-overflow-scrolling: touch;
 }
 
 .carousel-item {
-  min-width: 100%;
-  box-sizing: border-box;
-  text-align: center;
-  padding: 1.5rem;
-  background: rgba(231, 231, 231, 1);
+min-width: 100%;
+box-sizing: border-box;
+text-align: center;
+padding: 1.5rem;
+background: rgba(231, 231, 231, 1);
 }
 
 .carousel-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
-  margin-bottom: 1rem;
+width: 100%;
+height: 250px;
+border-radius: 10px;
+object-fit: cover;
+margin-bottom: 1rem;
 }
 
 .carousel-item blockquote {
-  font-style: italic;
-  color: #222;
-  font-size: 1.1rem;
-  font-weight: 700;
+font-style: italic;
+color: #222;
+font-size: 18px;
+font-weight: 700;
 }
 
 .carousel-item .author {
-  display: block;
-  color: #E34713;
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-align: right;
-  margin-top: 0.5rem;
+display: block;
+color: #E34713;
+font-size: 15px;
+font-weight: 700;
+text-align: right;
+margin-top: 0.5rem;
 }
 
-/* Indicadores */
+/* Puntitos indicadores */
 .carousel-indicators {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  gap: 5px;
+display: flex;
+justify-content: center;
+margin-top: 10px;
+gap: 5px;
 }
 
 .carousel-indicators .dot {
-  width: 10px;
-  height: 10px;
-  background: #ccc;
-  border-radius: 50%;
+width: 10px;
+height: 10px;
+background: #ccc;
+border-radius: 50%;
+display: inline-block;
 }
 
 .carousel-indicators .dot.active {
-  background: #E34713;
-}
-
-/* ======== SECCIÓN FINAL ======== */
-.final-text {
-  margin-top: 80px;
-  background: #000;
-  color: #fff;
-  width: 100%;
-  padding: 1rem 1.5rem;
-  text-align: left;
-  font-size: 0.8rem;
-}
-
-/* ======== MEDIA QUERIES ======== */
-
-/* Tablet */
-@media (min-width: 600px) {
-  .content h2 {
-    font-size: 2.4rem;
-  }
-
-  .highlight {
-    font-size: 3rem;
-  }
-
-  .content p {
-    font-size: 1.1rem;
-  }
-
-  .carousel-item blockquote {
-    font-size: 1.2rem;
-  }
-
-  .memories h3 {
-    font-size: 2rem;
-  }
-}
-
-/* Escritorio */
-@media (min-width: 1024px) {
-  header {
-    padding: 1rem 3rem;
-  }
-
-  .content, .map-section, .memories {
-    max-width: 1000px;
-  }
-
-  .content h2 {
-    font-size: 2.8rem;
-  }
-
-  .highlight {
-    font-size: 3.2rem;
-  }
-
-  .content p {
-    font-size: 1.15rem;
-    line-height: 1.8;
-  }
-
-  .carousel-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .carousel-item img {
-    max-width: 80%;
-  }
-
-  .final-text {
-    font-size: 0.9rem;
-    text-align: center;
-  }
+background: #E34713;
 }

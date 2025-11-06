@@ -4,78 +4,105 @@ const mapContent = document.querySelector(".map-content");
 const arrow = document.querySelector(".arrow");
 
 mapToggle.addEventListener("click", () => {
-  if (mapContent.style.display === "block") {
-    mapContent.style.display = "none";
-    arrow.textContent = "keyboard_arrow_down";
-  } else {
-    mapContent.style.display = "block";
-    arrow.textContent = "keyboard_arrow_up";
-  }
+ if (mapContent.style.display === "block") {
+ mapContent.style.display = "none";
+ arrow.textContent = "keyboard_arrow_down";
+ } else {
+ mapContent.style.display = "block";
+ arrow.textContent = "keyboard_arrow_up";
+ }
 });
 
 // ====== Carrusel táctil ======
 document.addEventListener("DOMContentLoaded", () => {
-  const track = document.querySelector(".carousel-track");
-  const items = Array.from(track.children);
-  const dots = document.querySelectorAll(".dot");
+ const track = document.querySelector(".carousel-track");
+ const items = Array.from(track.children);
+ const dots = document.querySelectorAll(".dot");
 
-  let currentIndex = 0;
-  let startX = 0;
-  let isDragging = false;
-  let currentTranslate = 0;
-  let prevTranslate = 0;
+ let currentIndex = 0;
+ let startX = 0;
+ let isDragging = false;
+ let currentTranslate = 0;
+ let prevTranslate = 0;
 
-  function setSlide(index) {
-    // limitar el índice
-    if (index < 0) index = 0;
-    if (index >= items.length) index = items.length - 1;
+ function setSlide(index) {
+ // limitar el índice
+ if (index < 0) index = 0;
+ if (index >= items.length) index = items.length - 1;
 
-    currentIndex = index;
-    currentTranslate = -index * 100;
-    prevTranslate = currentTranslate; // guarda la posición actual
-    track.style.transition = "transform 0.3s ease";
-    track.style.transform = `translateX(${currentTranslate}%)`;
+ currentIndex = index;
+ currentTranslate = -index * 100;
+ prevTranslate = currentTranslate; // guarda la posición actual
+ track.style.transition = "transform 0.3s ease";
+ track.style.transform = `translateX(${currentTranslate}%)`;
 
-    dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
-  }
+ dots.forEach((dot, i) => dot.classList.toggle("active", i === index));
+ }
 
-  // inicio del toque
-  track.addEventListener("touchstart", (e) => {
-    startX = e.touches[0].clientX;
-    isDragging = true;
-    track.style.transition = "none"; // sin animación mientras arrastra
-  });
+ // inicio del toque
+ track.addEventListener("touchstart", (e) => {
+ startX = e.touches[0].clientX;
+ isDragging = true;
+ track.style.transition = "none"; // sin animación mientras arrastra
+ });
 
-  // movimiento táctil (iPhone compatible)
-  track.addEventListener(
-    "touchmove",
-    (e) => {
-      if (!isDragging) return;
-      e.preventDefault(); // necesario para Safari / iPhone
-      const deltaX = e.touches[0].clientX - startX;
-      const movePercent = (deltaX / track.offsetWidth) * 100;
-      track.style.transform = `translateX(${prevTranslate + movePercent}%)`;
-    },
-    { passive: false } // clave para que funcione preventDefault() en iPhone
-  );
+ // movimiento táctil (iPhone compatible)
+ track.addEventListener(
+ "touchmove",
+ (e) => {
+ if (!isDragging) return;
+ e.preventDefault(); // necesario para Safari / iPhone
+ const deltaX = e.touches[0].clientX - startX;
+ const movePercent = (deltaX / track.offsetWidth) * 100;
+ track.style.transform = `translateX(${prevTranslate + movePercent}%)`;
+ },
+ { passive: false } // clave para que funcione preventDefault() en iPhone
+ );
 
-  // final del toque
-  track.addEventListener("touchend", (e) => {
-    isDragging = false;
-    const endX = e.changedTouches[0].clientX;
-    const deltaX = endX - startX;
+ // final del toque
+ track.addEventListener("touchend", (e) => {
+ isDragging = false;
+ const endX = e.changedTouches[0].clientX;
+ const deltaX = endX - startX;
 
-    // umbral de movimiento
-    if (deltaX < -50) setSlide(currentIndex + 1);
-    else if (deltaX > 50) setSlide(currentIndex - 1);
-    else setSlide(currentIndex);
-  });
+ // umbral de movimiento
+ if (deltaX < -50) setSlide(currentIndex + 1);
+ else if (deltaX > 50) setSlide(currentIndex - 1);
+ else setSlide(currentIndex);
+ });
 
-  // Click en los puntos
-  dots.forEach((dot, i) => {
-    dot.addEventListener("click", () => setSlide(i));
-  });
+ // Click en los puntos
+ dots.forEach((dot, i) => {
+ dot.addEventListener("click", () => setSlide(i));
+ });
 
-  // Inicializar carrusel
-  setSlide(0);
+ // Inicializar carrusel
+ setSlide(0);
+});
+
+// --- soporte táctil para iPhone ---
+const carouselTrack = document.querySelector('.carousel-track');
+let startX = 0;
+let currentX = 0;
+
+carouselTrack.addEventListener('touchstart', (e) => {
+ startX = e.touches[0].clientX;
+});
+
+carouselTrack.addEventListener('touchmove', (e) => {
+ currentX = e.touches[0].clientX;
+});
+
+carouselTrack.addEventListener('touchend', () => {
+ const diff = startX - currentX;
+
+ if (Math.abs(diff) > 50) { // si el deslizamiento es suficiente
+ if (diff > 0) {
+ // deslizar a la derecha -> siguiente imagen
+ moveToNextSlide();
+ } else {
+ // deslizar a la izquierda -> imagen anterior
+ moveToPrevSlide();
+ }
+ }
 });

@@ -1,4 +1,4 @@
-/* --- Reset --- */
+/* --- Reset general --- */
 * {
     margin: 0;
     padding: 0;
@@ -10,24 +10,51 @@ body {
     width: 100%;
     height: 100%;
     font-family: "DM Sans", sans-serif;
-    overflow-x: hidden;
-    text-align: left;
     color: #333;
+    overflow: hidden;
+    /* Evita scroll de la ventana principal */
+    display: flex;
+    /* Flex para centrar contenido */
+    justify-content: center;
+    /* Centrado horizontal */
+    align-items: center;
+    /* Centrado vertical */
+    background-color: #fff;
+    /* Fondo blanco general */
+    text-align: left;
 }
 
-/* --- Barra superior --- */
+/* --- Contenedor principal --- */
+.main-container {
+    width: 100%;
+    max-width: 430px;
+    /* Ancho fijo del diseño */
+    height: 100%;
+    background-color: #fff;
+    /* Fondo blanco del contenedor */
+    overflow-y: auto;
+    /* Scroll interno si contenido supera altura */
+    overflow-x: hidden;
+    position: relative;
+    -webkit-transform: translateZ(0);
+    /* Evita glitches visuales */
+}
+
+/* --- Barra superior fija --- */
 .top-bar {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 430px;
+    /* Igual al contenedor principal */
     background-color: #000;
     color: white;
     padding: 0.8rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    z-index: 20;
+    z-index: 9999;
 }
 
 .logo-area img {
@@ -60,13 +87,14 @@ body {
     transition: transform 0.3s ease, opacity 0.25s ease;
 }
 
-/* Animación del botón */
 .menu-btn.active span:nth-child(1) {
     transform: translateY(10px) rotate(45deg);
 }
+
 .menu-btn.active span:nth-child(2) {
     opacity: 0;
 }
+
 .menu-btn.active span:nth-child(3) {
     transform: translateY(-10px) rotate(-45deg);
 }
@@ -76,7 +104,7 @@ body {
     font-family: "Raleway", sans-serif;
     position: absolute;
     top: 100%;
-    right: 1.5rem;
+    right: 12px;
     display: flex;
     flex-direction: column;
     background: #111;
@@ -99,7 +127,6 @@ body {
     color: #f2f2f2;
     text-decoration: none;
     font-weight: 500;
-    border-bottom: none;
     text-align: left;
 }
 
@@ -130,7 +157,10 @@ body {
 .carrusel {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 64px);
+    /* altura ajustada por header */
+    min-height: 320px;
+    /* mínimo para pantallas pequeñas */
     overflow: hidden;
 }
 
@@ -161,14 +191,15 @@ body {
     object-fit: cover;
 }
 
-/* --- Título del carrusel --- */
+/* --- Título superpuesto del carrusel --- */
 .titulo-superpuesto {
     position: absolute;
     top: 70px;
-    left: 0;
-    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 24px);
     background-color: rgba(255, 255, 255, 0.4);
-    padding: 1.5rem 2rem;
+    padding: 1rem;
     text-align: left;
     z-index: 10;
 }
@@ -176,7 +207,7 @@ body {
 .titulo-superpuesto h1 {
     font-family: "Raleway", sans-serif;
     font-size: clamp(1.8rem, 5vw, 3rem);
-    color: #000000;
+    color: #000;
 }
 
 /* --- Controles del carrusel --- */
@@ -201,8 +232,13 @@ body {
     background-color: rgba(255, 255, 255, 0.7);
 }
 
-.prev { left: 10px; }
-.next { right: 10px; }
+.prev {
+    left: 10px;
+}
+
+.next {
+    right: 10px;
+}
 
 .indicadores {
     position: absolute;
@@ -221,6 +257,7 @@ body {
     background-color: rgba(255, 255, 255, 0.6);
     cursor: pointer;
 }
+
 .dot.active,
 .dot:hover {
     background-color: white;
@@ -229,7 +266,7 @@ body {
 /* --- Sección Ecoparque --- */
 .ecoparque {
     padding: 5rem 2rem;
-    max-width: 900px;
+    max-width: 430px;
     margin: 0 auto;
     text-align: left;
 }
@@ -239,7 +276,6 @@ body {
     font-size: 2.5rem;
     color: #c62828;
     font-weight: 700;
-    text-align: left;
 }
 
 .subtitulo-ecoparque {
@@ -247,16 +283,13 @@ body {
     font-size: 1.8rem;
     font-weight: 500;
     margin-bottom: 1.5rem;
-    text-align: left;
 }
 
-.texto-ecoparque,
 p {
     font-family: "DM Sans", sans-serif;
     line-height: 1.7;
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
-    text-align: left;
     color: #333;
 }
 
@@ -274,7 +307,6 @@ p {
 .gif-responsive {
     width: 100%;
     height: auto;
-    max-width: 100%;
     object-fit: cover;
 }
 
@@ -295,23 +327,38 @@ p {
 
 .mapa-container {
     width: 100%;
-    max-width: 1000px;
+    max-width: 430px;
     margin: 0 auto;
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
-/* --- 5. PIE DE PÁGINA --- */
+
+.mapa-container iframe {
+    width: 100%;
+    height: 300px;
+    border: 0;
+}
+
+/* --- Footer --- */
 .final-text {
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
     text-align: center;
-    background-color: #000000;
-    color: #ffffff !important; /* fuerza el color blanco */
-    margin-top: 4rem;
+    background-color: #000;
+    color: #fff;
     padding: 2.5rem 1rem;
 }
 
 .final-text p {
     max-width: 700px;
     margin: 0 auto;
-    color: #ffffff !important; /* asegura que los párrafos también sean blancos */
+}
+
+/* --- Ajuste general: evitar scroll horizontal --- */
+html,
+body,
+.main-container {
+    overflow-x: hidden !important;
 }
