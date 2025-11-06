@@ -149,7 +149,8 @@ header {
 /* --- 4. LISTA DE HITOS (MODO OSCURO) --- */
 .hitos-list {
     display: grid;
-    gap: 1.5rem;
+    /* CAMBIO: Reducimos el espacio entre los elementos de 1.5rem a 1rem */
+    gap: 1rem; 
     text-align: left;
 }
 
@@ -180,24 +181,48 @@ header {
     flex-shrink: 0;
 }
 
+/* ---------------------------------------------------------------- */
+/* CAMBIO: INVERSIÓN DE ESTILOS Y TAMAÑOS SOLICITADOS */
+/* ---------------------------------------------------------------- */
+
+.hito-textos {
+    flex-grow: 1;
+}
+
+/* H3 (Hito n°1): 16px, Normal (Texto secundario) */
 .hito-textos h3 {
     font-family: 'Raleway', sans-serif;
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #f5f5f5;
+    font-size: 16px; /* <-- TAMAÑO ESPECÍFICO: 16px */
+    font-weight: 400; /* <-- PESO: Normal */
+    line-height: 1.2; /* Interlineado reducido */
+    margin: 0 0 0.15rem 0; 
+    color: #aaa; /* Color secundario */
+    transition: color 0.2s ease-in-out;
 }
 
+/* P (Nombre del Hito): 20px, Negrita (Texto principal) */
 .hito-textos p {
-    font-size: 1rem;
-    color: #aaa;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px; /* <-- TAMAÑO ESPECÍFICO: 20px */
+    font-weight: 700; /* <-- PESO: Negrita */
+    line-height: 1.2; /* Interlineado reducido */
+    color: #f5f5f5; /* Color principal (blanco) */
+    margin: 0;
+    transition: color 0.2s ease-in-out;
 }
+
+/* ---------------------------------------------------------------- */
+/* AJUSTE DE EFECTOS HOVER */
+/* ---------------------------------------------------------------- */
 
 .hito-item:hover h3 {
-    color: #E34713;
+    /* El h3 (Hito n°) se vuelve un gris un poco más claro en hover */
+    color: #ccc;
 }
 
 .hito-item:hover p {
-    color: #ccc;
+    /* El p (Nombre del Hito) se vuelve naranja en hover */
+    color: #E34713;
 }
 
 /* --- 5. PIE DE PÁGINA --- */

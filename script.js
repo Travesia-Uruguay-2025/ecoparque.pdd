@@ -1,27 +1,28 @@
-// Botón .menu-btn
+// --- Botón menú hamburguesa ---
 const menuBtn = document.querySelector(".menu-btn");
 const menu = document.querySelector(".menu");
 
 menuBtn.addEventListener("click", () => {
-    menuBtn.classList.toggle("active"); // animación hamburguesa → cruz
-    if(menu) menu.classList.toggle("show"); // mostrar/ocultar menú
+  menuBtn.classList.toggle("active"); // animación hamburguesa → cruz
+  if (menu) menu.classList.toggle("show"); // mostrar/ocultar menú
 });
 
-// Botón .menu-toggle (si existe en otra sección)
+// --- Botón alternativo (por compatibilidad con otras secciones) ---
 const menuToggle = document.querySelector(".menu-toggle");
-if(menuToggle) {
-    menuToggle.addEventListener("click", () => {
-        menuToggle.classList.toggle("open");
-        if(menu) menu.classList.toggle("show");
-    });
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("open");
+    if (menu) menu.classList.toggle("show");
+  });
 }
 
-// --- Carrusel automático con fade ---
+// --- Carrusel automático con fade (sin flechas) ---
 const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
 let currentIndex = 0;
 let interval;
 
+// Mostrar slide actual
 function showSlide(i) {
   slides.forEach((slide, index) => {
     slide.classList.toggle("active", index === i);
@@ -30,26 +31,24 @@ function showSlide(i) {
   currentIndex = i;
 }
 
+// Pasar a la siguiente imagen automáticamente
 function nextSlide() {
   currentIndex = (currentIndex + 1) % slides.length;
   showSlide(currentIndex);
 }
 
+// Iniciar rotación automática
 function startAutoSlide() {
-  interval = setInterval(nextSlide, 4000);
+  interval = setInterval(nextSlide, 4000); // cada 4 segundos
 }
 
-document.querySelector(".next").addEventListener("click", () => {
-  nextSlide();
-  resetAutoSlide();
-});
+// Reiniciar el intervalo al hacer clic en un punto
+function resetAutoSlide() {
+  clearInterval(interval);
+  startAutoSlide();
+}
 
-document.querySelector(".prev").addEventListener("click", () => {
-  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-  showSlide(currentIndex);
-  resetAutoSlide();
-});
-
+// Permitir navegación con puntos
 dots.forEach((dot, i) => {
   dot.addEventListener("click", () => {
     showSlide(i);
@@ -57,11 +56,7 @@ dots.forEach((dot, i) => {
   });
 });
 
-function resetAutoSlide() {
-  clearInterval(interval);
-  startAutoSlide();
-}
-
+// Inicialización
 showSlide(0);
 startAutoSlide();
 
@@ -71,6 +66,8 @@ const gifRight = document.querySelector(".gif-right");
 
 window.addEventListener("scroll", () => {
   const section = document.querySelector(".gif-section");
+  if (!section) return;
+
   const rect = section.getBoundingClientRect();
   if (rect.top < window.innerHeight - 100) {
     if (gifLeft) gifLeft.classList.add("show-left");

@@ -1,0 +1,268 @@
+/* --- Reset --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    font-family: "DM Sans", sans-serif;
+    overflow-x: hidden;
+    text-align: left;
+    color: #333;
+}
+
+/* --- Barra superior --- */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    color: white;
+    padding: 0.8rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 20;
+}
+
+.logo-area img {
+    height: 60px;
+    object-fit: contain;
+}
+
+/* --- Botón menú hamburguesa --- */
+.menu-btn {
+    width: 44px;
+    height: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    gap: 5px;
+    padding: 5px;
+    z-index: 30;
+}
+
+.menu-btn span {
+    display: block;
+    width: 34px;
+    height: 4.5px;
+    background-color: white;
+    border-radius: 3px;
+    transition: transform 0.3s ease, opacity 0.25s ease;
+}
+
+/* Animación del botón */
+.menu-btn.active span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+.menu-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.menu-btn.active span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* --- Menú emergente --- */
+.menu {
+    font-family: "Raleway", sans-serif;
+    position: absolute;
+    top: 100%;
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    background: #111;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    transform-origin: top right;
+    transform: scaleY(0);
+    opacity: 0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu.show {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.menu a {
+    position: relative;
+    padding: 0.9rem 1.2rem;
+    color: #f2f2f2;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: none;
+    text-align: left;
+}
+
+.menu a::after {
+    content: '';
+    display: block;
+    width: 98%;
+    height: 0.5px;
+    background: #E34713;
+    margin: 0 auto;
+    margin-top: 15px;
+}
+
+.menu a:last-child::after {
+    display: none;
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.menu a.active {
+    color: #E34713;
+}
+.prev:hover,
+.next:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+.indicadores {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+}
+.dot.active,
+.dot:hover {
+    background-color: white;
+}
+
+/* --- Sección Ecoparque --- */
+.ecoparque {
+    padding: 5rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.titulo-ecoparque {
+    font-family: "Raleway", sans-serif;
+    font-size: 2.5rem;
+    color: #c62828;
+    font-weight: 700;
+    text-align: left;
+}
+
+.subtitulo-ecoparque {
+    font-family: "Raleway", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.texto-ecoparque,
+p {
+    font-family: "DM Sans", sans-serif;
+    line-height: 1.7;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    color: #333;
+}
+.imagen-contenedor {
+    width: 100%;
+    max-width: 900px; /* mismo límite que el texto */
+    margin: 2rem auto;
+}
+
+.imagen-ecoparque {
+    width: 100%;
+    border-radius: 25px;
+    object-fit: cover;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Responsividad --- */
+@media (max-width: 768px) {
+    .ecoparque {
+        padding: 3rem 1.5rem;
+    }
+
+    .titulo-ecoparque {
+        font-size: 2rem;
+    }
+
+    .subtitulo-ecoparque {
+        font-size: 1.5rem;
+    }
+
+    .texto-ecoparque {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .imagen-contenedor {
+        max-width: 100%;
+        margin: 1.8rem 0;
+    }
+
+    .imagen-ecoparque {
+        border-radius: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ecoparque {
+        padding: 2rem 1rem;
+    }
+
+    .titulo-ecoparque {
+        font-size: 1.8rem;
+    }
+
+    .subtitulo-ecoparque {
+        font-size: 1.3rem;
+    }
+
+    .texto-ecoparque {
+        font-size: 0.95rem;
+    }
+
+    .imagen-ecoparque {
+        border-radius: 16px;
+    }
+}
+
+/* --- 5. PIE DE PÁGINA --- */
+.final-text {
+    text-align: center;
+    background-color: #000000;
+    color: #ffffff !important; /* fuerza el color blanco */
+    margin-top: 4rem;
+    padding: 2.5rem 1rem;
+}
+
+.final-text p {
+    max-width: 700px;
+    margin: 0 auto;
+    color: #ffffff !important; /* asegura que los párrafos también sean blancos */
+}

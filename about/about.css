@@ -1,0 +1,194 @@
+/* --- 1. CONFIGURACIÓN GENERAL Y FUENTES --- */
+body {
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fdfdfd;
+    color: #333;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* --- 2. ENCABEZADO (HEADER) --- */
+
+header {
+    background-color: #000;
+    padding: 1rem 1.5rem;
+    position: relative;
+    z-index: 40;
+}
+
+.inner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* El CSS del logo de texto es obsoleto, pero lo dejo por si lo necesitas: */
+.logo {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 1.75rem;
+    color: #fff;
+}
+
+/* Estilo para la IMAGEN del logo que usas en el HTML */
+.logo-area .logo-img {
+    height: 40px; 
+    width: auto;
+    display: block;
+}
+
+/* --- BOTÓN HAMBURGUESA --- */
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 5px;
+    z-index: 30;
+}
+
+.menu-toggle span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* Animación a cruz al abrir */
+.menu-toggle.open span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+.menu-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+.menu-toggle.open span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- MENÚ DESPLEGABLE (EMERGENTE) --- */
+.menu {
+    font-family: Raleway;
+    position: absolute;
+    top: 100%;
+    right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    background: #111;
+    border-radius: none;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    transform-origin: top right;
+    transform: scaleY(0);
+    opacity: 0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    min-width: 200px; /* Tamaño mínimo para que se vean los enlaces */
+}
+
+.menu.show {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.menu a {
+    position: relative;
+    padding: 0.9rem 1.2rem;
+    color: #f2f2f2;
+    text-decoration: none;
+    font-weight: 500;
+    /* Las líneas debajo de los enlaces */
+}
+
+.menu a::after {
+    content: '';
+    display: block;
+    width: 98%; 
+    height: 0.5px; 
+    background: #E34713;
+    margin: 0 auto;
+    margin-top: 15px; 
+}
+
+.menu a:last-child::after {
+    content: none; /* Sin línea en el último botón */
+}
+
+.menu a:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.menu a.active {
+    color: #E34713;
+}
+
+/* --- 3. CONTENIDO PRINCIPAL (MAIN) --- */
+.content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    text-align: left;
+}
+
+.highlight {
+    font-family: 'Raleway', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #E34713;
+    margin-bottom: 1.5rem;
+}
+
+/* Reduce el espacio antes de la sección "Quienes somos" */
+.content > p:last-of-type {
+    margin-bottom: 1.5rem; /* antes 3rem */
+}
+
+.image-area {
+    display: flex;
+    justify-content: center;
+    margin: 3rem 0 2rem 0;
+}
+
+.image-area img {
+    width: 340px;
+    height: 277px;
+    object-fit: cover;
+    border-radius: 8px; /* opcional */
+}
+
+/* --- 4. PIE DE PÁGINA --- */
+.final-text {
+    text-align: center;
+    background-color: #000;
+    color: #aaa;
+    margin-top: 4rem;
+    padding: 2.5rem 1rem;
+}
+
+.final-text p {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- ESTILOS ADICIONALES PARA LA NUEVA PÁGINA --- */
+/* Aquí puedes añadir estilos para la clase .new-content-area si lo necesitas */
+.new-content-area h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.8rem;
+    color: #333; /* Color de texto normal */
+    margin-top: 2rem;
+}
+.new-content-area p {
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
