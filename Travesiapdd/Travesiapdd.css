@@ -22,7 +22,7 @@ html, body {
     width: 430px;
     background-color: #000;
     color: white;
-    padding: 0.8rem 1rem;
+    padding: 1rem 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -35,28 +35,24 @@ html, body {
 }
 
 /* --- Botón menú hamburguesa --- */
-.menu-btn {
-    width: 44px;
-    height: 36px;
+.menu-btn { /* reemplaza tu .menu-btn */
+    width: 35px;           /* ancho del botón */
+    height: 28px;          /* alto del botón */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
     background: none;
     border: none;
     cursor: pointer;
-    gap: 5px;
-    padding: 5px;
-    z-index: 30;
+    margin-right: 8px;     /* igual que el segundo código */
 }
 
 .menu-btn span {
     display: block;
-    width: 34px;
-    height: 4px;
-    background-color: white;
-    border-radius: 3px;
-    transition: transform 0.3s ease, opacity 0.25s ease;
+    height: 4px;           /* grosor de las barras */
+    background-color: white; 
+    border-radius: 4px;    /* igual que en el segundo ejemplo */
+    transition: 0.3s;      /* misma transición */
 }
 
 .menu-btn.open span:nth-child(1) {
@@ -131,12 +127,15 @@ html, body {
     text-align: left;
 }
 
-.titulo-ecoparque {
-    font-family: "Raleway", sans-serif;
-    font-size: 2rem;
-    color: #c62828;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+h1.highlight {
+    font-family: Raleway, sans-serif;
+    color: #E34713;
+    font-size: 2.5rem;
+    font-weight: 800 !important;
+    line-height: 3rem;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .subtitulo-ecoparque {
@@ -174,4 +173,22 @@ html, body {
     padding: 2.5rem 1rem;
     width: 430px;
     margin: 0 auto;
+}
+
+.highlight {
+    font-family: 'Raleway', sans-serif;
+    color: #E34713; /* rojo */
+    font-size: 2.5rem; /* tamaño igual */
+    font-weight: 800; /* extra bold */
+    line-height: 3rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.subtitulo {
+    font-family: 'DM Sans', sans-serif;
+    color: #000; /* negro */
+    font-size: 1.4rem; /* más pequeño */
+    font-weight: 500; /* normal */
+    line-height: 1.6rem;
 }
