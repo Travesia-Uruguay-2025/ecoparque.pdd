@@ -5,9 +5,6 @@ body {
     padding: 0;
     background-color: #fdfdfd;
     color: #333;
-    width: 430px;              /* ← Fijamos ancho de pantalla */
-    margin: 0 auto;            /* ← Centrado en vista previa */
-    overflow-x: hidden;        /* ← Evita scroll horizontal */
 }
 
 * {
@@ -20,20 +17,22 @@ header {
     padding: 1rem 1.5rem;
     position: relative;
     z-index: 40;
-    width: 100%;
 }
 
 .inner-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%; /* ← Ajuste total al ancho fijo */
-    margin: 0;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
 }
 
-.logo-area .logo-img {
-    height: 40px;
-    width: auto;
+.logo {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 800;
+    font-size: 1.75rem;
+    color: #fff;
 }
 
 /* --- BOTÓN HAMBURGUESA --- */
@@ -57,7 +56,7 @@ header {
     transition: all 0.3s ease;
 }
 
-/* Animación a cruz */
+/* Animación a cruz al abrir */
 .menu-toggle.open span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
 }
@@ -68,7 +67,7 @@ header {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* --- MENÚ DESPLEGABLE --- */
+/* --- MENÚ DESPLEGABLE (EMERGENTE) --- */
 .menu {
     font-family: Raleway;
     position: absolute;
@@ -77,12 +76,13 @@ header {
     display: flex;
     flex-direction: column;
     background: #111;
+    border-radius: none;
+    overflow: hidden;
     box-shadow: 0 8px 25px rgba(0,0,0,0.35);
     transform-origin: top right;
     transform: scaleY(0);
     opacity: 0;
     transition: transform 0.25s ease, opacity 0.25s ease;
-    min-width: 200px;
 }
 
 .menu.show {
@@ -96,20 +96,22 @@ header {
     color: #f2f2f2;
     text-decoration: none;
     font-weight: 500;
+    border-bottom: none; /* quitamos la línea por defecto */
 }
 
 .menu a::after {
     content: '';
     display: block;
-    width: 98%;
-    height: 0.5px;
+    width: 98%;       /* ← longitud de la línea */
+    height: 0.5px;      /* grosor */
     background: #E34713;
-    margin: 0 auto;
-    margin-top: 15px;
+    margin: 0 auto;   /* centrar la línea */
+    margin-top: 15px;  /* separación desde el texto */
 }
 
-.menu a:last-child::after {
-    content: none;
+
+.menu a:last-child {
+    border-bottom: none; /* sin línea en el último botón */
 }
 
 .menu a:hover {
@@ -123,88 +125,118 @@ header {
 
 /* --- 3. CONTENIDO PRINCIPAL (MAIN) --- */
 .content {
-    width: 100%;
-    margin: 2rem 0;
-    padding: 0 1.25rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
     text-align: left;
 }
 
 .highlight {
     font-family: 'Raleway', sans-serif;
-    font-size: 2rem; /* Ajustado para móviles */
+    font-size: 2.5rem;
     font-weight: 700;
     color: #E34713;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
 }
 
-.content > p {
-    font-size: 1rem;
+.content>p {
+    font-size: 1.1rem;
     line-height: 1.6;
     color: #555;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
 }
 
-/* --- 4. LISTA DE HITOS --- */
+/* --- 4. LISTA DE HITOS (MODO OSCURO) --- */
 .hitos-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    /* CAMBIO: Reducimos el espacio entre los elementos de 1.5rem a 1rem */
+    gap: 1rem; 
+    text-align: left;
 }
 
 .hito-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 1rem;
+    gap: 1.5rem;
+    padding: 1.25rem;
     background-color: #222;
     border: 1px solid #444;
     border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     text-decoration: none;
     color: inherit;
     transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
 .hito-item:hover {
-    transform: translateY(-3px);
-    border-color: #E34713;
+    transform: translateY(-5px);
+    border-color: #000000;
 }
 
 .hito-item img {
-    width: 85px;
-    height: 85px;
+    width: 100px;
+    height: 100px;
     object-fit: cover;
     border-radius: 8px;
     flex-shrink: 0;
 }
 
-.hito-textos h3 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 15px;
-    font-weight: 400;
-    margin: 0 0 0.2rem 0;
-    color: #aaa;
+/* ---------------------------------------------------------------- */
+/* CAMBIO: INVERSIÓN DE ESTILOS Y TAMAÑOS SOLICITADOS */
+/* ---------------------------------------------------------------- */
+
+.hito-textos {
+    flex-grow: 1;
 }
 
+/* H3 (Hito n°1): 16px, Normal (Texto secundario) */
+.hito-textos h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 16px; /* <-- TAMAÑO ESPECÍFICO: 16px */
+    font-weight: 400; /* <-- PESO: Normal */
+    line-height: 1.2; /* Interlineado reducido */
+    margin: 0 0 0.15rem 0; 
+    color: #aaa; /* Color secundario */
+    transition: color 0.2s ease-in-out;
+}
+
+/* P (Nombre del Hito): 20px, Negrita (Texto principal) */
 .hito-textos p {
     font-family: 'DM Sans', sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 1.2;
-    color: #f5f5f5;
+    font-size: 20px; /* <-- TAMAÑO ESPECÍFICO: 20px */
+    font-weight: 700; /* <-- PESO: Negrita */
+    line-height: 1.2; /* Interlineado reducido */
+    color: #f5f5f5; /* Color principal (blanco) */
     margin: 0;
+    transition: color 0.2s ease-in-out;
+}
+
+/* ---------------------------------------------------------------- */
+/* AJUSTE DE EFECTOS HOVER */
+/* ---------------------------------------------------------------- */
+
+.hito-item:hover h3 {
+    /* El h3 (Hito n°) se vuelve un gris un poco más claro en hover */
+    color: #ccc;
+}
+
+.hito-item:hover p {
+    /* El p (Nombre del Hito) se vuelve naranja en hover */
+    color: #E34713;
 }
 
 /* --- 5. PIE DE PÁGINA --- */
 .final-text {
-    text-align: center;
-    background-color: #000;
-    color: #aaa;
-    margin-top: 3rem;
-    padding: 2rem 1rem;
-    width: 100%;
+margin-top: 80px;
+background: #000; /* igual que el header */
+color: #fff; /* texto en blanco */
+width: 100%; /* ocupa todo el ancho del body */
+padding: 1rem 1.5rem; /* mismo padding que header y contenido */
+text-align: left; /* igual que el footer anterior */
+font-size: 12px; /* igual que antes */
 }
 
 .final-text p {
-    max-width: 400px;
+    max-width: 700px;
     margin: 0 auto;
 }

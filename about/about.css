@@ -168,17 +168,20 @@ header {
 
 /* --- 4. PIE DE PÁGINA --- */
 .final-text {
-    text-align: center;
-    background-color: #000;
-    color: #aaa;
-    margin-top: 4rem;
-    padding: 2.5rem 1rem;
+margin-top: 80px;
+background: #000; /* igual que el header */
+color: #fff; /* texto en blanco */
+width: 100%; /* ocupa todo el ancho del body */
+padding: 1rem 1.5rem; /* mismo padding que header y contenido */
+text-align: left; /* igual que el footer anterior */
+font-size: 12px; /* igual que antes */
 }
 
 .final-text p {
     max-width: 700px;
     margin: 0 auto;
 }
+
 
 /* --- ESTILOS ADICIONALES PARA LA NUEVA PÁGINA --- */
 /* Aquí puedes añadir estilos para la clase .new-content-area si lo necesitas */
@@ -193,23 +196,24 @@ header {
     margin-bottom: 1rem;
 }
 
-/* === AJUSTE TEMPORAL PARA VERSIÓN MÓVIL (430px) === */
-html, body {
-  width: 100%;
-  max-width: 430px;
-  margin: 0 auto;
-  overflow-x: hidden;
-}
-
-/* Centrar el contenido en pantallas más grandes */
+/* Vista normal para computador */
 body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: block;
 }
 
-/* Asegurar que los elementos principales se adapten */
-header, main, section {
-  width: 100%;
-  max-width: 430px;
+/* Que el contenido quede centrado en pantallas grandes */
+.content, .final-text p {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Adaptación para pantallas pequeñas */
+@media (max-width: 600px) {
+  .content, .final-text p {
+      max-width: 95%;
+      padding: 0 1rem;
+  }
 }
