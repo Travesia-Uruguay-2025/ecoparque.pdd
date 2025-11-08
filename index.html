@@ -6,18 +6,16 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300..800;1,300..800&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Raleway:wght@400;700&display=swap"
     rel="stylesheet">
   <title>Ecoparque Punta Del Diablo</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-  <!-- Contenedor central de 430px -->
   <div class="main-container">
 
-    <!-- Barra superior negra con logo y botón de menú -->
+    <!-- Barra superior -->
     <header class="top-bar">
       <div class="logo-area">
         <img src="assets/logo.png" alt="Logo Ecoparque" class="logo">
@@ -39,10 +37,11 @@
       </nav>
     </header>
 
-    <!-- Sección carrusel -->
+    <!-- Carrusel -->
     <section class="carrusel">
       <div class="titulo-superpuesto">
-        <h1>Ecoparque<br>Punta del Diablo</h1>
+        <h1 class="titulo-principal">Ecoparque</h1>
+        <p class="subtitulo-principal">Punta del Diablo</p>
       </div>
 
       <div class="slides">
@@ -53,7 +52,6 @@
         <div class="slide"><img src="assets/foto5.jpeg" alt="Imagen 5"></div>
       </div>
 
-      <!-- Indicadores -->
       <div class="indicadores">
         <span class="dot active"></span>
         <span class="dot"></span>
@@ -69,44 +67,41 @@
       <h3 class="subtitulo-ecoparque">Punta del Diablo</h3>
 
       <p>
-        El Ecoparque de Punta del Diablo es un espacio que invita a recorrer y reconocer el
-        entorno natural de la Costa rochense. A lo largo del camino, cada hito revela fragmentos del paisaje, la
-        historia y la vida
-        que habita este territorio: sus humedales, sus dunas, aves y especies nativas.
-      </p>
-
-      <div>
-        <strong>Esta plataforma acompaña el recorrido</strong>
-      </div>
-
-      <p>
-        A través de los <strong>códigos QR instalados en el parque</strong>, podrás acceder a contenidos
-        digitales sobre flora, fauna y memorias locales, descubriendo cómo la comunidad y la naturaleza se
-        entrelazan.
+        Este proyecto busca poner en valor el Ecoparque Punta del Diablo como un espacio de encuentro entre la
+        naturaleza, la comunidad y el conocimiento. A través de un recorrido de tótems informativos, se destaca la
+        relevancia del lugar y promueve la conservación de la biodiversidad y la comprensión del entorno natural. El
+        Ecoparque se plantea como un territorio vivo que invita a observar, aprender y reflexionar sobre nuestra
+        relación con el ambiente, fortaleciendo una mirada consciente y sostenible hacia el futuro.
       </p>
     </section>
-
-    <!-- GIF de ancho completo -->
+<!--Gif seccion (imagen temporal)-->
     <section class="gif-section">
-      <img src="assets/ecoparque.gif" alt="Animación Ecoparque" class="gif-responsive">
-    </section>
+  <img src="hitos/hibiscodebañado.png" alt="Imagen Ecoparque" class="imagen-completa">
+</section>
 
-    <!-- Mapa de Google integrado -->
+    <!-- Mapa -->
     <section class="mapa-section" id="mapa">
-      <h2>Ubicación del Ecoparque</h2>
+      <h2>Mapa De Hitos</h2>
       <div class="mapa-container">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3451.346725764293!2d-53.523!3d-34.047!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x959f82a8c6b9d8a7%3A0x23f4329e63e04d9a!2sPunta%20del%20Diablo%2C%20Rocha%2C%20Uruguay!5e0!3m2!1ses!2suy!4v1700000000000!5m2!1ses!2suy"
           width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
+
+      <!-- Botón Google Maps -->
+      <div class="boton-mapa-container">
+        <a href="https://www.google.com/maps/place/Punta+del+Diablo,+Uruguay/" target="_blank" class="boton-mapa">Ver en Google Maps</a>
+      </div>
     </section>
 
+    <!-- Footer -->
     <section class="final-text">
-      <p>Este proyecto fue desarrollado en contexto de la travesía Punta del Diablo 2025</p>
+      <p>Proyecto realizado por estudiantes y docentes de la e[ad] PUCV, la FADU-UdelaR, el CURE, el laboratorio LUPA y
+        organizaciones locales de Punta del Diablo.
+      </p>
     </section>
-
-  </div> <!-- cierre main-container -->
+  </div>
 
   <script src="script.js"></script>
 </body>

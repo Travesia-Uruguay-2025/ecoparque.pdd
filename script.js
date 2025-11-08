@@ -74,3 +74,18 @@ window.addEventListener("scroll", () => {
     if (gifRight) gifRight.classList.add("show-right");
   }
 });
+
+// --- Botón "Ver en Google Maps" ---
+// Si quieres efectos adicionales, como animación al hacer click
+const botonMapa = document.querySelector(".boton-mapa");
+
+if (botonMapa) {
+  botonMapa.addEventListener("click", (e) => {
+    console.log("Botón Google Maps clickeado");
+    // efecto opcional: animación rápida al hacer click
+    botonMapa.style.transform = "scale(0.95)";
+    setTimeout(() => {
+      botonMapa.style.transform = "";
+    }, 150);
+  });
+}
