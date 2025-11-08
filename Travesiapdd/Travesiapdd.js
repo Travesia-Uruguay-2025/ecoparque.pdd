@@ -1,16 +1,17 @@
-// --- Menú hamburguesa desplegable ---
-const menuBtn = document.getElementById("menu-btn");
-const menu = document.getElementById("menu");
+// --- Botón menú hamburguesa ---
+const menuBtn = document.querySelector(".menu-btn");
+const menu = document.querySelector(".menu");
 
 menuBtn.addEventListener("click", () => {
-    menuBtn.classList.toggle("open");
-    menu.classList.toggle("show");
+  menuBtn.classList.toggle("active"); // animación hamburguesa → cruz
+  if (menu) menu.classList.toggle("show"); // mostrar/ocultar menú
 });
 
-// Cierra el menú al hacer clic fuera
-document.addEventListener("click", (e) => {
-    if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
-        menu.classList.remove("show");
-        menuBtn.classList.remove("open");
-    }
-});
+// --- Botón alternativo (por compatibilidad con otras secciones) ---
+const menuToggle = document.querySelector(".menu-toggle");
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("open");
+    if (menu) menu.classList.toggle("show");
+  });
+}

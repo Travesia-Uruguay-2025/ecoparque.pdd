@@ -1,334 +1,282 @@
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-family: 'DM Sans', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'DM Sans', Arial, sans-serif;
 }
 
 body {
-background: #fff;
-color: #000;
-max-width: 430px;
-margin: auto;
+  background: #fff;
+  color: #000;
+  max-width: 430px;
+  margin: auto;
 }
 
+/* --- HEADER --- */
 header {
-display: flex;
-justify-content: space-between;
-align-items: center;
-background: #000;
-color: #fff;
-padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #000;
+  color: #fff;
+  padding: 1rem;
+  position: relative;
 }
 
 .logo {
-margin-left: 10px;
-font-weight: bold;
-font-size: 1.8rem;
+  font-weight: bold;
+  font-size: 1.6rem;
+  letter-spacing: 1px;
+  margin-left: 10px;
 }
 
 .menu-toggle {
-width: 35px;
-height: 28px;
-display: flex;
-flex-direction: column;
-justify-content: space-between;
-background: none;
-border: none;
-cursor: pointer;
-margin-right: 8px;
+  width: 35px;
+  height: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
 }
 
 .menu-toggle span {
-display: block;
-height: 4px;
-background-color: white;
-border-radius: 4px;
-transition: 0.3s;
+  display: block;
+  height: 4px;
+  background-color: white;
+  border-radius: 4px;
+  transition: 0.3s;
 }
 
-.menu::before {
-content: "";
-position: fixed;
-top: 0;
-left: 0;
-width: 100vw;
-height: 100vh;
-background: rgba(0, 0, 0, 0.45);
-z-index: -1;
+/* --- ANIMACIÓN hamburguesa a cruz --- */
+.menu-toggle.open span:nth-child(1) {
+  transform: translateY(12px) rotate(45deg);
+}
+
+.menu-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open span:nth-child(3) {
+  transform: translateY(-12px) rotate(-45deg);
+}
+
+/* --- MENÚ DESPLEGABLE --- */
+.menu {
+  position: absolute;
+  top: 60px;
+  right: 10px;
+  background: #000;
+  display: none;
+  flex-direction: column;
+  text-align: left;
+  padding: 1rem 1.5rem;
+  border-radius: none;
+  width: 230px; /* ancho del rectángulo */
+}
+
+.menu.show {
+  display: flex;
+}
+
+.menu ul {
+  list-style: none;
+  width: 100%;
 }
 
 .menu li {
-list-style: none;
-padding: 1rem 0;
-border-bottom: 1px solid #E34713;
-font-size: 1.2rem;
-font-family: 'Raleway';
-font-weight: 500;
+  border-bottom: 1px solid #E34713;
+  padding: 0.8rem 0;
 }
 
+.menu li:last-child {
+  border-bottom: none;
+}
+
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Raleway';
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #E34713;
+}
+
+/* --- SECCIONES --- */
 .map-section {
-background: #E6E6E6;
-padding: 1rem;
-width: 380px;
-margin: 1.5rem auto; 
-border-radius: 10px;
+  background: #E6E6E6;
+  padding: 1rem;
+  width: 380px;
+  margin: 1.5rem auto;
+  border-radius: 10px;
 }
 
 .map-toggle {
-background: none;
-border: none;
-width: 100%;
-display: flex;
-align-items: center;
-font-weight: 500;
-justify-content: flex-start;
-gap: 8px;
+  background: none;
+  border: none;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
 }
 
 .ubicacion-icon {
-font-size: 28px;
-color: #000000;
+  font-size: 28px;
+  color: #000000;
 }
 
 .ubicacion-texto {
-font-family: Raleway;
-font-size: 1.1rem;
-color: #000;
+  font-family: Raleway;
+  font-size: 1.1rem;
+  color: #000;
 }
 
 .arrow {
-margin-left: auto;
-font-size: 44px;
-color: #000000;
+  margin-left: auto;
+  font-size: 44px;
+  color: #000000;
 }
 
 .map-content {
-display: none;
-margin-top: 1rem;
-}
-
-.placeholder {
-background: #d9d9d9;
-width: 100%;
-border-radius: 10px;
-object-fit: cover;
-display: block;
+  display: none;
+  margin-top: 1rem;
 }
 
 .mapa {
-width: 100%;
-height: 250px; 
-border-radius: 10px;
-object-fit: cover;
-display: block;
-margin: 1.5rem auto;
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  margin: 1.5rem auto;
 }
 
 .hibiscodebañado {
-width: 100%;
-height: 250px; 
-border-radius: 10px;
-object-fit: cover;
-display: block;
-margin: 1.5rem auto;
-}
-
-.paisajememorias1 {
-width: 100%;
-height: 250px; 
-border-radius: 10px;
-object-fit: cover;
-display: block;
-margin: 1.5rem auto;
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+  margin: 1.5rem auto;
 }
 
 .content {
-padding: 1.5rem;
+  padding: 1.5rem;
 }
 
 .content h2 {
-font-family: Raleway;
-font-size: 1.8rem;
-line-height: 2.5rem;
-font-weight: 550;
+  font-family: Raleway;
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+  font-weight: 550;
 }
 
 .highlight {
-font-family: Raleway;
-color: #E34713;
-font-size: 2.5rem;
-font-weight: 800;
+  font-family: Raleway;
+  color: #E34713;
+  font-size: 2.5rem;
+  font-weight: 800;
 }
 
 .content p {
-color: #333;
-line-height: 1.5;
-margin-bottom: 1rem;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 1rem;
 }
 
+/* --- MEMORIAS --- */
 .memories {
-padding: 1.5rem;
+  padding: 1.5rem;
 }
 
 .memories h3 {
-margin-bottom: 1.5rem;
-font-family: Raleway;
-font-weight: 700;
-color: #000;
-margin-left: 22px;
-font-size: 25px;
-font-style: bold;
-}
-
-.memory-box {
-background: rgba(128, 128, 128, 0.5);
-padding: 1.5rem;
-min-height: 250px; 
-width: 100%;
-margin: 0 auto; 
-}
-
-.memory-box img {
-width: 100%;
-border-radius: 10px;
-margin-bottom: 1rem;
-height: 277px;
-}
-
-.memory-box blockquote {
-font-family: 'DM Sans';
-font-style: italic;
-font-weight: 700;
-color: #222;
-font-size: 18px;
-}
-
-.memory-box .author {
-display: block;
-color: #E34713;
-margin-top: 0.5rem;
-font-family: 'DM Sans';
-font-size: 15px;
-font-weight: 700;
-text-align: right;
-}
-
-blockquote {
-font-family: DM Sans;
-font-style: italic;
-color: #222;
-font-size: 20px;
-font-weight: 700;
-}
-
-.author {
-display: block;
-color: #E34713;
-margin-top: 0.5rem;
-font-family: DM Sans;
-font-size: 16px;
-font-weight: 700;
-margin-left: 20px;
-font-style: bold;
-}
-
-footer {
-text-align: left;
-font-size: 12px;
-padding: 1rem;
-color: #555;
-margin-left: 6px;
-}
-
-.memories {
-padding: 0; /* eliminamos el padding lateral que encoge la caja gris */
-}
-
-.memory-box {
-background: rgba(128, 128, 128, 0.5);
-width: 100%;
-padding: 1.5rem;
-min-height: 250px;
-border-radius: 0; /* si quieres que quede igual que el header */
-}
-
-.final-text {
-margin-top: 80px;
-background: #000; /* igual que el header */
-color: #fff; /* texto en blanco */
-width: 100%; /* ocupa todo el ancho del body */
-padding: 1rem 1.5rem; /* mismo padding que header y contenido */
-text-align: left; /* igual que el footer anterior */
-font-size: 12px; /* igual que antes */
+  margin-bottom: 1.5rem;
+  font-family: Raleway;
+  font-weight: 700;
+  color: #000;
+  margin-left: 22px;
+  font-size: 25px;
 }
 
 .carousel {
-position: relative;
-width: 100%;
-max-width: 430px;
-margin: 1.5rem auto;
-overflow: hidden;
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  margin: 1.5rem auto;
+  overflow: hidden;
 }
 
 .carousel-track {
-display: flex;
-transition: transform 0.3s ease;
-}
-
-.carousel-track {
- touch-action: pan-y;
- -webkit-overflow-scrolling: touch;
+  display: flex;
+  transition: transform 0.3s ease;
 }
 
 .carousel-item {
-min-width: 100%;
-box-sizing: border-box;
-text-align: center;
-padding: 1.5rem;
-background: rgba(231, 231, 231, 1);
+  min-width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 1.5rem;
+  background: rgba(231, 231, 231, 1);
 }
 
 .carousel-item img {
-width: 100%;
-height: 250px;
-border-radius: 10px;
-object-fit: cover;
-margin-bottom: 1rem;
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-bottom: 1rem;
 }
 
 .carousel-item blockquote {
-font-style: italic;
-color: #222;
-font-size: 18px;
-font-weight: 700;
+  font-style: italic;
+  color: #222;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .carousel-item .author {
-display: block;
-color: #E34713;
-font-size: 15px;
-font-weight: 700;
-text-align: right;
-margin-top: 0.5rem;
+  display: block;
+  color: #E34713;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: right;
+  margin-top: 0.5rem;
 }
 
-/* Puntitos indicadores */
+/* --- PUNTOS --- */
 .carousel-indicators {
-display: flex;
-justify-content: center;
-margin-top: 10px;
-gap: 5px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  gap: 5px;
 }
 
 .carousel-indicators .dot {
-width: 10px;
-height: 10px;
-background: #ccc;
-border-radius: 50%;
-display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: #ccc;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 .carousel-indicators .dot.active {
-background: #E34713;
+  background: #E34713;
+}
+
+/* --- FINAL TEXT --- */
+.final-text {
+  margin-top: 80px;
+  background: #000;
+  color: #fff;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  text-align: left;
+  font-size: 12px;
 }

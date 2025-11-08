@@ -355,20 +355,19 @@ p {
 
 /* --- Footer --- */
 .final-text {
-    width: 100%;
-    text-align: center;
-    background-color: #000;
-    color: #ffffff;
-    padding: 2.5rem 1rem;
+margin-top: 80px;
+background: #000; /* igual que el header */
+color: #fff; /* texto en blanco */
+width: 100%; /* ocupa todo el ancho del body */
+padding: 1rem 1.5rem; /* mismo padding que header y contenido */
+text-align: left; /* igual que el footer anterior */
+font-size: 12px; /* igual que antes */
 }
 
 .final-text p {
-    font-family: 'DM Sans', sans-serif;
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    line-height: 1.4;
-    max-width: 800px;
+    max-width: 700px;
     margin: 0 auto;
-     color: #ffffff;
+    color: #fff;
 }
 
 /* --- Ajustes pequeños --- */

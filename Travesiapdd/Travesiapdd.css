@@ -35,33 +35,38 @@ html, body {
 }
 
 /* --- Botón menú hamburguesa --- */
-.menu-btn { /* reemplaza tu .menu-btn */
-    width: 35px;           /* ancho del botón */
-    height: 28px;          /* alto del botón */
+.menu-btn {
+    width: 44px;
+    height: 36px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background: none;
     border: none;
     cursor: pointer;
-    margin-right: 8px;     /* igual que el segundo código */
+    gap: 5px;
+    padding: 5px;
+    z-index: 30;
 }
 
 .menu-btn span {
     display: block;
-    height: 4px;           /* grosor de las barras */
-    background-color: white; 
-    border-radius: 4px;    /* igual que en el segundo ejemplo */
-    transition: 0.3s;      /* misma transición */
+    width: 34px;
+    height: 5px;
+    background-color: white;
+    border-radius: 3px;
+    transition: transform 0.3s ease, opacity 0.25s ease;
 }
 
-.menu-btn.open span:nth-child(1) {
+.menu-btn.active span:nth-child(1) {
     transform: translateY(10px) rotate(45deg);
 }
-.menu-btn.open span:nth-child(2) {
+
+.menu-btn.active span:nth-child(2) {
     opacity: 0;
 }
-.menu-btn.open span:nth-child(3) {
+
+.menu-btn.active span:nth-child(3) {
     transform: translateY(-10px) rotate(-45deg);
 }
 
