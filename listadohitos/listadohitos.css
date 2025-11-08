@@ -14,7 +14,7 @@ body {
 /* --- 2. ENCABEZADO (HEADER) --- */
 header {
     background-color: #000;
-    padding: 1rem 1.5rem;
+    padding: 1rem 1rem; /* igual que en la otra página */
     position: relative;
     z-index: 40;
 }
@@ -23,9 +23,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-    position: relative;
+    max-width: 1400px;
 }
 
 .logo {
@@ -35,8 +33,18 @@ header {
     color: #fff;
 }
 
+.logo-img {
+    height: 50px;   /* tamaño equilibrado */
+    width: auto;
+}
+
+/* --- BOTÓN HAMBURGUESA --- */
 /* --- BOTÓN HAMBURGUESA --- */
 .menu-toggle {
+    position: absolute;   /* ← aquí está la clave */
+    right: 1rem;          /* mueve hacia la derecha (ajusta este valor) */
+    top: 50%;
+    transform: translateY(-50%);
     background: none;
     border: none;
     cursor: pointer;
@@ -52,7 +60,7 @@ header {
     width: 28px;
     height: 3px;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 5px;
     transition: all 0.3s ease;
 }
 
@@ -120,7 +128,7 @@ header {
 }
 
 .menu a.active {
-    color: #E34713;
+    color: #ffffff;
 }
 
 /* --- 3. CONTENIDO PRINCIPAL (MAIN) --- */

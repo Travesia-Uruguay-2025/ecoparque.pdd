@@ -12,10 +12,9 @@ body {
 }
 
 /* --- 2. ENCABEZADO (HEADER) --- */
-
 header {
     background-color: #000;
-    padding: 1rem 1.5rem;
+    padding: 1rem 1rem; /* igual que en la otra página */
     position: relative;
     z-index: 40;
 }
@@ -24,12 +23,9 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-    position: relative;
+    max-width: 1400px;
 }
 
-/* El CSS del logo de texto es obsoleto, pero lo dejo por si lo necesitas: */
 .logo {
     font-family: 'Raleway', sans-serif;
     font-weight: 800;
@@ -37,15 +33,18 @@ header {
     color: #fff;
 }
 
-/* Estilo para la IMAGEN del logo que usas en el HTML */
-.logo-area .logo-img {
-    height: 40px; 
+.logo-img {
+    height: 50px;   /* tamaño equilibrado */
     width: auto;
-    display: block;
 }
 
 /* --- BOTÓN HAMBURGUESA --- */
+/* --- BOTÓN HAMBURGUESA --- */
 .menu-toggle {
+    position: absolute;   /* ← aquí está la clave */
+    right: 1rem;          /* mueve hacia la derecha (ajusta este valor) */
+    top: 50%;
+    transform: translateY(-50%);
     background: none;
     border: none;
     cursor: pointer;
@@ -61,7 +60,7 @@ header {
     width: 28px;
     height: 3px;
     background-color: #fff;
-    border-radius: 3px;
+    border-radius: 5px;
     transition: all 0.3s ease;
 }
 
@@ -92,7 +91,6 @@ header {
     transform: scaleY(0);
     opacity: 0;
     transition: transform 0.25s ease, opacity 0.25s ease;
-    min-width: 200px; /* Tamaño mínimo para que se vean los enlaces */
 }
 
 .menu.show {
@@ -106,21 +104,22 @@ header {
     color: #f2f2f2;
     text-decoration: none;
     font-weight: 500;
-    /* Las líneas debajo de los enlaces */
+    border-bottom: none; /* quitamos la línea por defecto */
 }
 
 .menu a::after {
     content: '';
     display: block;
-    width: 98%; 
-    height: 0.5px; 
+    width: 98%;       /* ← longitud de la línea */
+    height: 0.5px;      /* grosor */
     background: #E34713;
-    margin: 0 auto;
-    margin-top: 15px; 
+    margin: 0 auto;   /* centrar la línea */
+    margin-top: 15px;  /* separación desde el texto */
 }
 
-.menu a:last-child::after {
-    content: none; /* Sin línea en el último botón */
+
+.menu a:last-child {
+    border-bottom: none; /* sin línea en el último botón */
 }
 
 .menu a:hover {
@@ -129,7 +128,7 @@ header {
 }
 
 .menu a.active {
-    color: #E34713;
+    color: #ffffff;
 }
 
 /* --- 3. CONTENIDO PRINCIPAL (MAIN) --- */
@@ -145,28 +144,56 @@ header {
     font-size: 2.5rem;
     font-weight: 700;
     color: #E34713;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
-/* Reduce el espacio antes de la sección "Quienes somos" */
-.content > p:last-of-type {
-    margin-bottom: 1.5rem; /* antes 3rem */
+.content>p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 1.2rem; /* más delicado */
 }
 
+/* --- SECCIÓN "QUIENES SOMOS" --- */
+.new-content-area {
+    margin-top: 1.0rem; /* baja el aire entre secciones */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem; /* espacio parejo entre elementos */
+    max-width: 800px; /* mismo ancho que el texto anterior */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.new-content-area h3 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #000000;
+    margin-top: 0.5rem;    /* quita el espacio fantasma */
+    margin-bottom: 0.3rem;
+}
+
+.new-content-area p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555; /* mismo tono del párrafo inicial */
+}
+
+/* Imagen alineada y con respiro */
 .image-area {
+    margin-top: 1rem;
+    width: 100%;
     display: flex;
     justify-content: center;
-    margin: 3rem 0 2rem 0;
 }
 
 .image-area img {
-    width: 340px;
-    height: 277px;
-    object-fit: cover;
-    border-radius: 8px; /* opcional */
+    max-width: 100%;
+    border-radius: 8px;
 }
 
-/* --- 4. PIE DE PÁGINA --- */
+/* --- 5. PIE DE PÁGINA --- */
 .final-text {
 margin-top: 80px;
 background: #000; /* igual que el header */
@@ -180,40 +207,4 @@ font-size: 12px; /* igual que antes */
 .final-text p {
     max-width: 700px;
     margin: 0 auto;
-}
-
-
-/* --- ESTILOS ADICIONALES PARA LA NUEVA PÁGINA --- */
-/* Aquí puedes añadir estilos para la clase .new-content-area si lo necesitas */
-.new-content-area h3 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.8rem;
-    color: #333; /* Color de texto normal */
-    margin-top: 2rem;
-}
-.new-content-area p {
-    line-height: 1.7;
-    margin-bottom: 1rem;
-}
-
-/* Vista normal para computador */
-body {
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  display: block;
-}
-
-/* Que el contenido quede centrado en pantallas grandes */
-.content, .final-text p {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-/* Adaptación para pantallas pequeñas */
-@media (max-width: 600px) {
-  .content, .final-text p {
-      max-width: 95%;
-      padding: 0 1rem;
-  }
 }

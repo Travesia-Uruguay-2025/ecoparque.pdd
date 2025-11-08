@@ -1,60 +1,66 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=430, initial-scale=1.0">
-    <title>Ecoparque — Información</title>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Raleway:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Travesiapdd.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Raleway:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+        rel="stylesheet">
+    <title>Sobre el Proyecto</title>
+    <link rel="stylesheet" href="Travesiapdd.css" />
 </head>
+
 <body>
 
-    <!-- Barra superior -->
-    <header class="top-bar">
+<header>
+    <div class="inner-header">
         <div class="logo-area">
-            <img src="../assets/logo.png" alt="Logo Ecoparque">
+            <img src="../about/logopng.png" alt="Logo Ecoparque" class="logo-img">
         </div>
-        <button id="menu-btn" class="menu-btn" aria-label="Abrir menú">
+
+        <!-- Botón hamburguesa -->
+        <button id="menu-btn" class="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
         </button>
+
+        <!-- Menú emergente -->
         <nav id="menu" class="menu">
             <a href="../index.html">Inicio</a>
             <a href="../about/about.html">Sobre el proyecto</a>
-            <a href="../listadohitos/listadohitos.html">Listado de hitos</a>
-            <a href="../Travesiapdd/Travesiapdd.html" class="active">Travesía PDD</a>
+            <a href="../listadohitos/listadohitos.html" class="active">Listado de hitos</a>
+            <a href="Travesiapdd.html">Travesía PDD 2025</a>
         </nav>
-    </header>
+    </div>
+</header>
 
-    <!-- Contenido principal -->
-    <main class="ecoparque" style="margin-top: 100px;">
-        <h2>
-  <span class="highlight">Travesía</span><br>
-  <span class="subtitulo">Punta del Diablo 2025</span>
-</h2>
+<main class="content">
+    <h2 class="highlight">Travesía</h2> 
 
+<div class="new-content-area">
+    <h3>Punta del Diablo 2025</h3>
 
-        <p class="texto-ecoparque">
-            El Ecoparque de Punta del Diablo es un espacio que invita a recorrer y reconocer el entorno natural de la costa rochense. 
-            A lo largo del camino, cada hito revela fragmentos del paisaje, la historia y la vida que habita este territorio: sus humedales, dunas, aves y especies nativas.
-        </p>
+    <p>Las travesías son viajes académicos que se realizan una vez al año y se llevan a cabo durante el mes de noviembre, estos son organizados por cada taller de la Escuela de Arquitectura y Diseño de la Pontificia Universidad Católica de Valparaíso. Consisten en viajes que se llevan realizando desde hace más de 40 años, recorriendo mayormente la extensión del continente Americano, permitiéndonos explorar las posibilidades de nuestros oficios.</p>
+    <p>Partimos en estos viajes no solo con el propósito de estudiar y aplicar conocimientos en terreno, sino que también con la disposición de escuchar, observar y comprender a las comunidades que nos reciben, para finalmente otorgar un regalo. Nos ponemos en su lugar para descubrir cómo el oficio puede contribuir y ayudar a mejorar la vida de otros.</p>
+    <div class="image-area">
+        <img src="paisajememorias1.jpg" alt="Paisaje y memorias del Ecoparque">
+    </div>
+    <p>La travesía 2025 a Punta del Diablo se presenta como una experiencia de inmersión territorial, pedagógica y afectiva entre bosques psamófilos, borde costero y memorias comunitarias. Los equipos docentes y estudiantiles de Chile y Uruguay, provenientes de la e[ad] PUCV, la FADU-UdelaR, el CURE, el laboratorio LUPA y organizaciones locales, prepararon una micro intervención en el Ecoparque Punta del Diablo con el propósito de informar a la comunidad sobre la flora y fauna del territorio y sus memorias vinculadas a la vida del territorio.</p>
+</div>
 
-        <div class="imagen-contenedor">
-            <img src="paisajememorias1.jpg" alt="Paisaje del Ecoparque" class="imagen-ecoparque">
-        </div>
+</main>
 
-        <p class="texto-ecoparque">
-            Este proyecto busca fomentar la observación atenta del entorno, promoviendo una relación respetuosa entre el visitante y la naturaleza. 
-            Cada tramo del recorrido ofrece una oportunidad para detenerse, mirar y aprender de lo que el lugar tiene para contar.
-        </p>
-    </main>
+<section class="final-text">
+    <p>
+        Proyecto realizado por estudiantes y docentes de la e[ad] PUCV, la FADU-UdelaR, el CURE, el laboratorio LUPA y
+        organizaciones locales de Punta del Diablo.
+    </p>
+</section>
 
-    <!-- Pie de página -->
-    <footer class="final-text">
-        <p>Este proyecto fue desarrollado en contexto de la travesía Punta del Diablo 2025</p>
-    </footer>
-
-    <script src="Travesiapdd.js"></script>
+<script src="../about/about.js"></script>
 </body>
 </html>
