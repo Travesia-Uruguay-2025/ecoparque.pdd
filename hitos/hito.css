@@ -8,8 +8,9 @@
 body {
   background: #fff;
   color: #000;
-  max-width: 430px;
-  margin: auto;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 16px;
 }
 
 /* --- HEADER --- */
@@ -19,15 +20,14 @@ header {
   align-items: center;
   background: #000;
   color: #fff;
-  padding: 1rem;
+  padding: 1rem 2%;
   position: relative;
 }
 
 .logo {
   font-weight: bold;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   letter-spacing: 1px;
-  margin-left: 10px;
 }
 
 .menu-toggle {
@@ -50,7 +50,7 @@ header {
   transition: 0.3s;
 }
 
-/* --- ANIMACIÓN hamburguesa a cruz --- */
+/* --- Animación hamburguesa a cruz --- */
 .menu-toggle.open span:nth-child(1) {
   transform: translateY(12px) rotate(45deg);
 }
@@ -67,14 +67,13 @@ header {
 .menu {
   position: absolute;
   top: 60px;
-  right: 10px;
+  right: 2%;
   background: #000;
   display: none;
   flex-direction: column;
   text-align: left;
   padding: 1rem 1.5rem;
-  border-radius: none;
-  width: 230px; /* ancho del rectángulo */
+  width: 250px;
 }
 
 .menu.show {
@@ -111,8 +110,9 @@ header {
 /* --- SECCIONES --- */
 .map-section {
   background: #E6E6E6;
-  padding: 1rem;
-  width: 380px;
+  padding: 1rem 2%;
+  width: 96%;
+  max-width: 1000px;
   margin: 1.5rem auto;
   border-radius: 10px;
 }
@@ -149,31 +149,25 @@ header {
   margin-top: 1rem;
 }
 
-.mapa {
-  width: 100%;
-  height: 250px;
-  border-radius: 10px;
-  object-fit: cover;
-  display: block;
-  margin: 1.5rem auto;
-}
-
+.mapa,
 .hibiscodebañado {
   width: 100%;
-  height: 250px;
+  height: auto;
   border-radius: 10px;
-  object-fit: cover;
   display: block;
   margin: 1.5rem auto;
+  object-fit: cover;
 }
 
 .content {
-  padding: 1.5rem;
+  padding: 1.5rem 2%;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .content h2 {
   font-family: Raleway;
-  font-size: 1.8rem;
+  font-size: 2rem;
   line-height: 2.5rem;
   font-weight: 550;
 }
@@ -187,13 +181,16 @@ header {
 
 .content p {
   color: #333;
-  line-height: 1.5;
+  line-height: 1.6;
   margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
 /* --- MEMORIAS --- */
 .memories {
-  padding: 1.5rem;
+  padding: 1.5rem 2%;
+  max-width: 1000px;
+  margin: auto;
 }
 
 .memories h3 {
@@ -201,50 +198,47 @@ header {
   font-family: Raleway;
   font-weight: 700;
   color: #000;
-  margin-left: 22px;
-  font-size: 25px;
+  font-size: 2rem;
 }
 
+/* --- CARRUSEL --- */
 .carousel {
   position: relative;
   width: 100%;
-  max-width: 430px;
-  margin: 1.5rem auto;
   overflow: hidden;
 }
 
 .carousel-track {
   display: flex;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
 .carousel-item {
   min-width: 100%;
   box-sizing: border-box;
   text-align: center;
-  padding: 1.5rem;
+  padding: 1rem;
   background: rgba(231, 231, 231, 1);
 }
 
 .carousel-item img {
   width: 100%;
-  height: 250px;
+  height: auto;
   border-radius: 10px;
-  object-fit: cover;
   margin-bottom: 1rem;
 }
 
 .carousel-item blockquote {
   font-style: italic;
   color: #222;
-  font-size: 18px;
+  font-size: 1.1rem;
   font-weight: 700;
 }
 
 .carousel-item .author {
   display: block;
   color: #E34713;
-  font-size: 15px;
+  font-size: 0.9rem;
   font-weight: 700;
   text-align: right;
   margin-top: 0.5rem;
@@ -276,7 +270,45 @@ header {
   background: #000;
   color: #fff;
   width: 100%;
-  padding: 1rem 1.5rem;
+  padding: 1rem 2%;
   text-align: left;
-  font-size: 12px;
+  font-size: 0.9rem;
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 768px) {
+  .content h2 {
+    font-size: 1.8rem;
+  }
+
+  .highlight {
+    font-size: 2rem;
+  }
+
+  .memories h3 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .content h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .highlight {
+    font-size: 1.7rem;
+  }
+
+  .memories h3 {
+    font-size: 1.3rem;
+  }
+
+  .carousel-item blockquote {
+    font-size: 1rem;
+  }
+
+  .carousel-item .author {
+    font-size: 0.8rem;
+  }
 }

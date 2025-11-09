@@ -18,15 +18,14 @@ if (mapToggle) {
 }
 
 // --- CARRUSEL AUTOMÁTICO ---
+const track = document.querySelector(".carousel-track");
 const slides = document.querySelectorAll(".carousel-item");
 const dots = document.querySelectorAll(".dot");
 let currentIndex = 0;
 
 function showSlide(i) {
-  slides.forEach((slide, idx) => {
-    slide.classList.toggle("active", idx === i);
-    dots[idx].classList.toggle("active", idx === i);
-  });
+  track.style.transform = `translateX(-${i * 100}%)`;
+  dots.forEach((dot, idx) => dot.classList.toggle("active", idx === i));
   currentIndex = i;
 }
 
