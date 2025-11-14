@@ -1,388 +1,454 @@
 /* --- Reset general --- */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'DM Sans', Arial, sans-serif;
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   font-family: 'DM Sans', Arial, sans-serif;
 }
+
 
 html,
 body {
-    width: 100%;
-    height: 100%;
-    color: #333;
-    background-color: #fff;
-    overflow-x: hidden;
-    text-align: left;
-    line-height: 1.4;
-    /* Interlineado al 140% */
+   width: 100%;
+   height: 100%;
+   color: #333;
+   background-color: #fff;
+   overflow-x: hidden;
+   text-align: left;
+   line-height: 1.4;
 }
+
 
 /* --- Contenedor principal --- */
 .main-container {
-    width: 100%;
-    background-color: #fff;
-    overflow-x: hidden;
-    position: relative;
+   width: 100%;
+   background-color: #fff;
+   overflow-x: hidden;
+   position: relative;
 }
+
 
 /* --- Barra superior fija --- */
 .top-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #000;
-    color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 9999;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   background-color: #000;
+   color: white;
+   padding: 1rem 2rem; 
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   z-index: 9999;
 }
 
-.logo-area img {
-    height: 60px;
-    object-fit: contain;
+
+/* --- Logo --- */
+.logo-area {
+   margin-left: -0.5rem;
+   margin-top: 6px;
+   display: flex;
+   align-items: center;
 }
+
+
+.logo {
+   height: 60px;
+   object-fit: contain;
+}
+
 
 /* --- Botón menú hamburguesa --- */
 .menu-btn {
-    width: 44px;
-    height: 36px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    background: none;
-    border: none;
-    cursor: pointer;
-    gap: 5px;
-    padding: 5px;
-    z-index: 30;
+   width: 44px;
+   height: 36px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   background: none;
+   border: none;
+   cursor: pointer;
+   gap: 5px;
+   padding: 5px;
+   z-index: 30;
 }
+
 
 .menu-btn span {
-    display: block;
-    width: 34px;
-    height: 4.5px;
-    background-color: white;
-    border-radius: 3px;
-    transition: transform 0.3s ease, opacity 0.25s ease;
+   display: block;
+   width: 34px;
+   height: 4.5px;
+   background-color: white;
+   border-radius: 3px;
+   transition: transform 0.3s ease, opacity 0.25s ease;
 }
+
 
 .menu-btn.active span:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
+   transform: translateY(10px) rotate(45deg);
 }
+
 
 .menu-btn.active span:nth-child(2) {
-    opacity: 0;
+   opacity: 0;
 }
 
+
 .menu-btn.active span:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
+   transform: translateY(-10px) rotate(-45deg);
 }
+
 
 /* --- Menú emergente --- */
 .menu {
-    position: absolute;
-    top: 100%;
-    right: 20px;
-    display: flex;
-    flex-direction: column;
-    background: #111;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
-    transform-origin: top right;
-    transform: scaleY(0);
-    opacity: 0;
-    transition: transform 0.25s ease, opacity 0.25s ease;
+   position: absolute;
+   top: 100%;
+   right: 20px;
+   display: flex;
+   flex-direction: column;
+   background: #111;
+   overflow: hidden;
+   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+   transform-origin: top right;
+   transform: scaleY(0);
+   opacity: 0;
+   transition: transform 0.25s ease, opacity 0.25s ease;
 }
+
 
 .menu.show {
-    transform: scaleY(1);
-    opacity: 1;
+   transform: scaleY(1);
+   opacity: 1;
 }
+
 
 .menu a {
-    padding: 0.9rem 1.2rem;
-    color: #f2f2f2;
-    text-decoration: none;
-    font-weight: 500;
+   padding: 0.9rem 1.2rem;
+   color: #f2f2f2;
+   text-decoration: none;
+   font-weight: 500;
 }
 
-.menu a::after {
-    content: '';
-    display: block;
-    width: 98%;
-    height: 0.5px;
-    background: #E34713;
-    margin: 0.7rem auto 0;
-}
-
-.menu a:last-child::after {
-    display: none;
-}
-
-.menu a:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
-}
 
 .menu a.active {
-    color: #E34713;
+   color: #FFD221;
 }
+
+
+.menu a::after {
+   content: '';
+   display: block;
+   width: 98%;
+   height: 0.5px;
+   background: #FFD221;
+   margin: 0.7rem auto 0;
+}
+
+
+.menu a:last-child::after {
+   display: none;
+}
+
+
+.menu a:hover {
+   background: rgba(255, 255, 255, 0.05);
+   color: #fff;
+}
+
 
 /* --- Carrusel --- */
 .carrusel {
-    position: relative;
-    width: 100%;
-    height: 90vh;
-    min-height: 350px;
-    overflow: hidden;
+   position: relative;
+   width: 100%;
+   height: 90vh;
+   min-height: 350px;
+   overflow: hidden;
 }
+
 
 .slides {
-    position: relative;
-    width: 100%;
-    height: 100%;
+   position: relative;
+   width: 100%;
+   height: 100%;
 }
+
 
 .slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1.2s ease-in-out;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   opacity: 0;
+   transition: opacity 1.2s ease-in-out;
 }
+
 
 .slide.active {
-    opacity: 1;
-    z-index: 5;
+   opacity: 1;
+   z-index: 5;
 }
+
 
 .slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
 }
 
-/* --- Título superpuesto del carrusel --- */
+
+/* --- Título superpuesto --- */
 .titulo-superpuesto {
-    position: absolute;
-    top: 95px;
-    left: 0;
-    width: 100%;
-    height: 150px;
-    /* Altura ajustable del cuadro translúcido */
-    z-index: 10;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* centra verticalmente el texto */
-    gap: 0.3rem;
-    padding: 0 2rem;
+   position: absolute;
+   top: 95px;
+   left: 0;
+   width: 100%;
+   height: 150px;
+   z-index: 10;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 0.3rem;
+   padding: 0 2rem;
 }
+
 
 .titulo-superpuesto::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 85%;
-    /* cubre todo el contenedor */
-    background-color: rgba(255, 255, 255, 0.4);
-    z-index: -1;
-    /* detrás del texto */
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 85%;
+   background-color: rgba(255, 255, 255, 0.4);
+   z-index: -1;
 }
+
 
 /* --- Tipografía carrusel --- */
 .titulo-principal {
-    font-family: 'Raleway', sans-serif;
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 700;
-    line-height: 1.4;
-    color: #000;
+   font-family: 'Raleway', sans-serif;
+   font-size: clamp(2rem, 5vw, 3rem);
+   font-weight: 700;
+   line-height: 1.4;
+   color: #000;
 }
+
 
 .subtitulo-principal {
-    font-family: 'Raleway', sans-serif;
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    font-weight: 500;
-    line-height: 1.4;
-    color: #333;
+   font-family: 'Raleway', sans-serif;
+   font-size: clamp(1rem, 3vw, 1.5rem);
+   font-weight: 500;
+   line-height: 1.4;
+   color: #333;
 }
 
-/* --- Indicadores del carrusel --- */
+
+/* --- Indicadores carrusel --- */
 .indicadores {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 10;
+   position: absolute;
+   bottom: 20px;
+   left: 50%;
+   transform: translateX(-50%);
+   display: flex;
+   gap: 8px;
+   z-index: 10;
 }
+
 
 .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.6);
-    cursor: pointer;
+   width: 12px;
+   height: 12px;
+   border-radius: 50%;
+   background-color: rgba(255, 255, 255, 0.6);
+   cursor: pointer;
 }
+
 
 .dot.active,
 .dot:hover {
-    background-color: white;
+   background-color: white;
 }
+
 
 /* --- Sección Ecoparque --- */
 .ecoparque {
-    padding: 5rem 2rem;
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: left;
+   padding: 5rem 2rem;
+   max-width: 900px;
+   margin: 0 auto;
+   text-align: left;
 }
+
 
 .titulo-ecoparque {
-    font-family: 'Raleway', sans-serif;
-    font-size: clamp(30px, 3.5vw, 35px);
-    font-weight: 700;
-    line-height: 1.4;
-      color: #E34713; /* ← color actual del título */
+   font-family: 'Raleway', sans-serif;
+   font-size: clamp(2rem, 4vw, 2.5rem);
+   font-weight: 700;
+   line-height: 1.4;
+   color: #1931A8;
 }
+
 
 .subtitulo-ecoparque {
-    font-family: 'Raleway', sans-serif;
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    font-weight: 500;
-    line-height: 1.4;
-    margin-bottom: 1.5rem;
+   font-family: 'Raleway', sans-serif;
+   font-size: clamp(1.2rem, 3vw, 1.8rem);
+   font-weight: 500;
+   line-height: 1.4;
+   margin-bottom: 1.5rem;
 }
 
+
 p {
-    font-family: 'DM Sans', sans-serif;
-    font-size: clamp(1rem, 2vw, 1.1rem);
-    line-height: 1.4;
-    margin-bottom: 1.5rem;
-    color: #333;
+   font-family: 'DM Sans', sans-serif;
+   font-size: clamp(1rem, 2vw, 1.1rem);
+   line-height: 1.4;
+   margin-bottom: 1.5rem;
+   color: #333;
 }
+
 
 /* --- GIF --- */
 .gif-section {
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 4rem;
+   width: 100%;
+   overflow: hidden;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 4rem;
 }
 
+
 .imagen-completa {
-    width: 100%;
-    height: auto; /* mantiene la proporción */
-    object-fit: cover; /* cubre todo el contenedor */
-    display: block;
+   width: 100%;
+   height: auto;
+   object-fit: cover;
+   display: block;
 }
+
 
 /* --- Mapa --- */
 .mapa-section {
-    text-align: left;
-    padding: 4rem 2rem;
-    background-color: #fff;
+   text-align: left;
+   padding: 4rem 2rem;
+   background-color: #fff;
 }
+
 
 .mapa-section h2 {
-    font-family: 'Raleway', sans-serif;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 700;
-    line-height: 1.4;
-    margin-bottom: 1.5rem;
-    color: #000;
+   font-family: 'Raleway', sans-serif;
+   font-size: clamp(1.5rem, 3vw, 2rem);
+   font-weight: 700;
+   line-height: 1.4;
+   margin-bottom: 1.5rem;
+   color: #000;
 }
+
 
 .mapa-container {
-    width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+   width: 100%;
+   max-width: 900px;
+   margin: 0 auto;
+   border-radius: 12px;
+   overflow: hidden;
+   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
+
 
 .mapa-container iframe {
-    width: 100%;
-    height: 350px;
-    border: 0;
+   width: 100%;
+   height: 350px;
+   border: 0;
 }
 
-/* --- Botón Google Maps --- */
+
+/* --- Botón Google Maps (ACTUALIZADO) --- */
 .boton-mapa-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 1.5rem;
+   display: flex;
+   justify-content: center;
+   margin: 20px auto 10px auto;
 }
+
 
 .boton-mapa {
-    background-color: #E34713;
-    color: #fff;
-    text-decoration: none;
-    padding: 0.8rem 2rem;
-    border-radius: 50px;
-    font-family: 'Raleway', sans-serif;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: background-color 0.3s, transform 0.2s;
+   background-color: #1931A8;
+   color: #fff;
+   text-decoration: none;
+   padding: 0.8rem 2rem;
+   border-radius: 50px;
+   font-family: 'Raleway', sans-serif;
+   font-weight: 600;
+   font-size: 1rem;
+   width: 100%;
+   text-align: center;
+   transition: background-color 0.3s, transform 0.2s;
 }
+
 
 .boton-mapa:hover {
-    background-color: #c93b0f;
-    transform: scale(1.05);
+   background-color: #1931A8;
+   transform: scale(1.05);
 }
 
-/* Responsivo botón */
-@media (max-width: 480px) {
-    .boton-mapa {
-        width: 90%;
-        padding: 1rem 1.5rem;
-        font-size: 0.95rem;
-        text-align: center;
-    }
-}
 
 /* --- Footer --- */
 .final-text {
-margin-top: 80px;
-background: #000; /* igual que el header */
-color: #fff; /* texto en blanco */
-width: 100%; /* ocupa todo el ancho del body */
-padding: 1rem 1.5rem; /* mismo padding que header y contenido */
-text-align: left; /* igual que el footer anterior */
-font-size: 12px; /* igual que antes */
+   margin-top: 80px;
+   background: #000;
+   width: 100%;
+   padding: 1rem 1.5rem;
+   text-align: left;
+   font-size: 12px;
 }
+
 
 .final-text p {
-    max-width: 700px;
-    margin: 0 auto;
-    color: #fff;
+   max-width: 700px;
+   margin: 0 auto;
+   font-size: 12px;
+   color: #fff;
 }
 
-/* --- Ajustes pequeños --- */
-@media (max-width: 480px) {
-    .titulo-superpuesto {
-        top: 70px;
-        height: 100px;
-        padding: 0 1rem;
-    }
 
-    .logo-area img {
-        height: 45px;
-    }
+/* --- BOTÓN CIRCULAR DE SCROLL --- */
+.scroll-next-btn {
+   position: fixed;
+   bottom: 25px;
+   left: 50%;
+   transform: translateX(-50%);
+   width: 55px;
+   height: 55px;
+   background: #1931A8;
+   border: none;
+   border-radius: 50%;
+   color: white;
+   font-size: 1.8rem;
+   font-weight: bold;
+   cursor: pointer;
+   z-index: 9999;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+   transition: transform 0.2s ease, background 0.3s ease, opacity 0.25s ease;
+   -webkit-tap-highlight-color: transparent;
+   touch-action: auto;
+}
 
-    .top-bar {
-        padding: 0.8rem 1rem;
-    }
+
+.scroll-next-btn:hover {
+   transform: translateX(-50%) scale(1.1);
+   background: #0f1f6d;
+}
+
+
+.scroll-next-btn:active {
+   transform: translateX(-50%) scale(0.95);
+}
+
+
+/* Ocultar botón al final */
+.scroll-next-btn.hidden {
+   opacity: 0;
+   pointer-events: none;
 }
