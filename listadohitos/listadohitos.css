@@ -1,237 +1,268 @@
 /* --- 1. CONFIGURACIÓN GENERAL Y FUENTES --- */
 body {
-    font-family: 'DM Sans', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #fdfdfd;
-    color: #333;
+   font-family: 'DM Sans', sans-serif;
+   margin: 0;
+   padding: 0;
+   background-color: #fdfdfd;
+   color: #333;
 }
 
+
 * {
-    box-sizing: border-box;
+   box-sizing: border-box;
 }
+
 
 /* --- 2. ENCABEZADO (HEADER) --- */
 header {
-    background-color: #000;
-    padding: 1rem 1rem; /* igual que en la otra página */
-    position: relative;
-    z-index: 40;
+   background-color: #000;
+   padding: 1rem 1rem; /* igual que en la otra página */
+   position: relative;
+   z-index: 40;
 }
+
 
 .inner-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 1400px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   max-width: 1400px;
 }
+
 
 .logo {
-    font-family: 'Raleway', sans-serif;
-    font-weight: 800;
-    font-size: 1.75rem;
-    color: #fff;
+   font-family: 'Raleway', sans-serif;
+   font-weight: 800;
+   font-size: 1.75rem;
+   color: #fff;
 }
+
 
 .logo-img {
-    height: 50px;   /* tamaño equilibrado */
-    width: auto;
+   height: 50px;   /* tamaño equilibrado */
+   width: auto;
 }
 
-/* --- BOTÓN HAMBURGUESA --- */
+
 /* --- BOTÓN HAMBURGUESA --- */
 .menu-toggle {
-    position: absolute;   /* ← aquí está la clave */
-    right: 1rem;          /* mueve hacia la derecha (ajusta este valor) */
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    padding: 5px;
-    z-index: 30;
+   position: absolute;   /* ← aquí está la clave */
+   right: 1rem;          /* mueve hacia la derecha (ajusta este valor) */
+   top: 50%;
+   transform: translateY(-50%);
+   background: none;
+   border: none;
+   cursor: pointer;
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+   padding: 5px;
+   z-index: 30;
 }
 
+
 .menu-toggle span {
-    display: block;
-    width: 28px;
-    height: 3px;
-    background-color: #fff;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+   display: block;
+   width: 28px;
+   height: 3px;
+   background-color: #fff;
+   border-radius: 5px;
+   transition: all 0.3s ease;
 }
+
 
 /* Animación a cruz al abrir */
 .menu-toggle.open span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+   transform: translateY(8px) rotate(45deg);
 }
 .menu-toggle.open span:nth-child(2) {
-    opacity: 0;
+   opacity: 0;
 }
 .menu-toggle.open span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+   transform: translateY(-8px) rotate(-45deg);
 }
+
 
 /* --- MENÚ DESPLEGABLE (EMERGENTE) --- */
 .menu {
-    font-family: Raleway;
-    position: absolute;
-    top: 100%;
-    right: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    background: #111;
-    border-radius: none;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
-    transform-origin: top right;
-    transform: scaleY(0);
-    opacity: 0;
-    transition: transform 0.25s ease, opacity 0.25s ease;
+   font-family: Raleway;
+   position: absolute;
+   top: 100%;
+   right: 1.5rem;
+   display: flex;
+   flex-direction: column;
+   background: #111;
+   border-radius: none;
+   overflow: hidden;
+   box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+   transform-origin: top right;
+   transform: scaleY(0);
+   opacity: 0;
+   transition: transform 0.25s ease, opacity 0.25s ease;
 }
+
 
 .menu.show {
-    transform: scaleY(1);
-    opacity: 1;
+   transform: scaleY(1);
+   opacity: 1;
 }
+
 
 .menu a {
-    position: relative;
-    padding: 0.9rem 1.2rem;
-    color: #f2f2f2;
-    text-decoration: none;
-    font-weight: 500;
-    border-bottom: none; /* quitamos la línea por defecto */
+   position: relative;
+   padding: 0.9rem 1.2rem;
+   color: #f2f2f2;
+   text-decoration: none;
+   font-weight: 500;
+   border-bottom: none; /* quitamos la línea por defecto */
 }
 
+
 .menu a::after {
-    content: '';
-    display: block;
-    width: 98%;       /* ← longitud de la línea */
-    height: 0.5px;      /* grosor */
-    background: #E34713;
-    margin: 0 auto;   /* centrar la línea */
-    margin-top: 15px;  /* separación desde el texto */
+   content: '';
+   display: block;
+   width: 98%;       /* ← longitud de la línea */
+   height: 0.5px;      /* grosor */
+   background: #FFD221;
+   margin: 0 auto;   /* centrar la línea */
+   margin-top: 15px;  /* separación desde el texto */
 }
+
+
 
 
 .menu a:last-child {
-    border-bottom: none; /* sin línea en el último botón */
+   border-bottom: none; /* sin línea en el último botón */
 }
+
 
 .menu a:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: #fff;
+   background: rgba(255, 255, 255, 0.05);
+   color: #fff;
 }
 
+
 .menu a.active {
-    color: #ffffff;
+   color: #ffffff;
 }
+
 
 /* --- 3. CONTENIDO PRINCIPAL (MAIN) --- */
 .content {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-    text-align: left;
+   max-width: 800px;
+   margin: 2rem auto;
+   padding: 0 1rem;
+   text-align: left;
 }
+
 
 .highlight {
-    font-family: 'Raleway', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #E34713;
-    margin-bottom: 1.5rem;
+   font-family: 'Raleway', sans-serif;
+   font-size: 2.5rem;
+   font-weight: 700;
+   color: #1931A8;
+   margin-bottom: 1.5rem;
 }
 
+
 .content>p {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #555;
-    margin-bottom: 3rem;
+   font-size: 1.1rem;
+   line-height: 1.6;
+   color: #555;
+   margin-bottom: 3rem;
 }
+
 
 /* --- 4. LISTA DE HITOS (MODO OSCURO) --- */
 .hitos-list {
-    display: grid;
-    /* CAMBIO: Reducimos el espacio entre los elementos de 1.5rem a 1rem */
-    gap: 1rem; 
-    text-align: left;
+   display: grid;
+   /* CAMBIO: Reducimos el espacio entre los elementos de 1.5rem a 1rem */
+   gap: 1rem;
+   text-align: left;
+  
 }
+
 
 .hito-item {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.25rem;
-    background-color: #222;
-    border: 1px solid #444;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
+   display: flex;
+   align-items: center;
+   gap: 1.5rem;
+   padding: 1.75rem;
+   background-color: #222;
+   border: 1px solid #444;
+   border-radius: 12px;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+   text-decoration: none;
+   color: inherit;
+   transition: transform 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
+
 
 .hito-item:hover {
-    transform: translateY(-5px);
-    border-color: #000000;
+   transform: translateY(-5px);
+   border-color: #000000;
 }
 
+
 .hito-item img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 8px;
-    flex-shrink: 0;
+   width: 140px;
+   height: 140px;
+   object-fit: cover;
+   border-radius: 8px;
+   flex-shrink: 0;
 }
+
 
 /* ---------------------------------------------------------------- */
 /* CAMBIO: INVERSIÓN DE ESTILOS Y TAMAÑOS SOLICITADOS */
 /* ---------------------------------------------------------------- */
 
+
 .hito-textos {
-    flex-grow: 1;
+   flex-grow: 1;
 }
+
 
 /* H3 (Hito n°1): 16px, Normal (Texto secundario) */
 .hito-textos h3 {
-    font-family: 'Raleway', sans-serif;
-    font-size: 16px; /* <-- TAMAÑO ESPECÍFICO: 16px */
-    font-weight: 400; /* <-- PESO: Normal */
-    line-height: 1.2; /* Interlineado reducido */
-    margin: 0 0 0.15rem 0; 
-    color: #aaa; /* Color secundario */
-    transition: color 0.2s ease-in-out;
+   font-family: 'Raleway', sans-serif;
+   font-size: 16px; /* <-- TAMAÑO ESPECÍFICO: 16px */
+   font-weight: 400; /* <-- PESO: Normal */
+   line-height: 1.2; /* Interlineado reducido */
+   margin: 0 0 0.15rem 0;
+   color: #aaa; /* Color secundario */
+   transition: color 0.2s ease-in-out;
 }
+
 
 /* P (Nombre del Hito): 20px, Negrita (Texto principal) */
 .hito-textos p {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 20px; /* <-- TAMAÑO ESPECÍFICO: 20px */
-    font-weight: 700; /* <-- PESO: Negrita */
-    line-height: 1.2; /* Interlineado reducido */
-    color: #f5f5f5; /* Color principal (blanco) */
-    margin: 0;
-    transition: color 0.2s ease-in-out;
+   font-family: 'DM Sans', sans-serif;
+   font-size: 20px; /* <-- TAMAÑO ESPECÍFICO: 20px */
+   font-weight: 700; /* <-- PESO: Negrita */
+   line-height: 1.2; /* Interlineado reducido */
+   color: #f5f5f5; /* Color principal (blanco) */
+   margin: 0;
+   transition: color 0.2s ease-in-out;
 }
+
 
 /* ---------------------------------------------------------------- */
 /* AJUSTE DE EFECTOS HOVER */
 /* ---------------------------------------------------------------- */
 
+
 .hito-item:hover h3 {
-    /* El h3 (Hito n°) se vuelve un gris un poco más claro en hover */
-    color: #ccc;
+   /* El h3 (Hito n°) se vuelve un gris un poco más claro en hover */
+   color: #ccc;
 }
 
+
 .hito-item:hover p {
-    /* El p (Nombre del Hito) se vuelve naranja en hover */
-    color: #E34713;
+   /* El p (Nombre del Hito) se vuelve naranja en hover */
+   color: #FFD221;
 }
+
 
 /* --- 5. PIE DE PÁGINA --- */
 .final-text {
@@ -244,7 +275,45 @@ text-align: left; /* igual que el footer anterior */
 font-size: 12px; /* igual que antes */
 }
 
+
 .final-text p {
-    max-width: 700px;
-    margin: 0 auto;
+   max-width: 700px;
+   margin: 0 auto;
+}
+/* --- AJUSTE DEFINITIVO PARA CELULAR (MÁS ESPACIO) --- */
+@media (max-width: 600px) {
+
+
+   .content {
+       padding-left: 2rem;
+       padding-right: 2rem;
+   }
+
+
+   .hitos-list {
+       padding-left: 0.35rem;
+       padding-right: 0.3rem;
+   }
+
+
+   /* Reducimos padding del recuadro para que la imagen se vea más grande */
+   .hito-item {
+       padding: 0.8em;
+   }
+
+
+   /* Aumentamos el tamaño real de la imagen */
+   .hito-item img {
+       width: 150px;
+       height: 150px;
+   }
+
+
+   .final-text {
+       padding-left: 2rem;
+       padding-right: 2rem;
+   }
+       .logo {
+       margin-left: 2rem;
+   }
 }
