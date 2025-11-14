@@ -24,15 +24,16 @@ header {
   position: relative;
 }
 
-.logo {
-  font-weight: bold;
-  font-size: 1.8rem;
-  letter-spacing: 1px;
+.logo-area img {
+    height: 44px;
+    object-fit: contain;
+    margin-left: 10px;
+    margin-top: 5px;
 }
 
 .menu-toggle {
-  width: 35px;
-  height: 28px;
+  width: 34px;
+  height: 25px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -40,14 +41,17 @@ header {
   border: none;
   cursor: pointer;
   z-index: 1001;
+  margin-right: 13px;
 }
 
 .menu-toggle span {
   display: block;
-  height: 4px;
+  width: 100%;         /* asegura que todas midan lo mismo */
+  height: 4px;         /* grosor uniforme */
   background-color: white;
   border-radius: 4px;
-  transition: 0.3s;
+  margin: 0;           /* por si alguna tiene margen por defecto */
+  padding: 0;
 }
 
 /* --- Animación hamburguesa a cruz --- */
