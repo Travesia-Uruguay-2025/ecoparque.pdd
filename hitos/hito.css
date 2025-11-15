@@ -90,7 +90,7 @@ header {
 }
 
 .menu li {
-  border-bottom: 1px solid #E34713;
+  border-bottom: 1px solid  #FFD221;
   padding: 0.8rem 0;
 }
 
@@ -177,15 +177,15 @@ header {
 
 .content h2 {
   font-family: Raleway;
-  font-size: 2rem;
-  line-height: 2.5rem;
+  font-size: 1.5rem;
+  line-height: 2.2rem;
   font-weight: 550;
   margin-left: 22px;
 }
 
 .highlight {
   font-family: Raleway;
-  color: #E34713;
+  color: #1931A8;
   font-size: 2.5rem;
   font-weight: 800;
   margin-left: auto;
@@ -250,13 +250,16 @@ header {
   color: #222;
   font-size: 1.1rem;
   font-weight: 700;
+  margin-right: 8px;
+  margin-left: 8px;
+  margin-top: 18px;
 }
 
 .carousel-item .author {
   display: block;
-  color: #E34713;
+  color: black;
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: 500;
   text-align: right;
   margin-top: 0.5rem;
 }
@@ -278,7 +281,7 @@ header {
 }
 
 .carousel-indicators .dot.active {
-  background: #E34713;
+  background: #1931A8;
 }
 
 /* --- FINAL TEXT --- */
@@ -298,26 +301,27 @@ header {
 /* --- MEDIA QUERIES --- */
 @media (max-width: 768px) {
   .content h2 {
-    font-size: 1.8rem;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
   }
 
   .highlight {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .memories h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 }
 
 @media (max-width: 480px) {
   .content h2 {
     font-size: 1.5rem;
-    line-height: 2rem;
+    line-height: 2.2rem;
   }
 
   .highlight {
-    font-size: 1.7rem;
+    font-size: 2.5rem;
   }
 
   .memories h3 {
@@ -331,4 +335,8 @@ header {
   .carousel-item .author {
     font-size: 0.8rem;
   }
+
+  .ubicacion-texto {
+  font-size: 1rem;
+}
 }
