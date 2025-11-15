@@ -220,13 +220,14 @@ header {
 
 /* --- 5. PIE DE PÁGINA --- */
 .final-text {
+font-family: DM Sans;
 margin-top: 80px;
 background: #000; /* igual que el header */
 color: #fff; /* texto en blanco */
 width: 100%; /* ocupa todo el ancho del body */
 padding: 1rem 1.5rem; /* mismo padding que header y contenido */
 text-align: left; /* igual que el footer anterior */
-font-size: 12px; /* igual que antes */
+font-size: 0.8rem; /* igual que antes */
 }
 
 
@@ -259,6 +260,6 @@ font-size: 12px; /* igual que antes */
 
    .final-text {
        padding-left: 2rem;
-       padding-right: 2rem;
+       padding-right: 1.6rem;
    }
 }

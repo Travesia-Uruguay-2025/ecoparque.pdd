@@ -283,6 +283,7 @@ header {
 
 /* --- FINAL TEXT --- */
 .final-text {
+  font-family: DM Sans;
   margin-top: 80px;
   background: #000;
   color: #fff;
