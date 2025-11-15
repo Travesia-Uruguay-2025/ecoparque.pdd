@@ -204,7 +204,7 @@ header {
 .memories {
   padding: 1.5rem 2%;
   max-width: 1000px;
-  margin-left: 22px;
+  
 }
 
 .memories h3 {
@@ -213,6 +213,7 @@ header {
   font-weight: 700;
   color: #000;
   font-size: 2rem;
+  margin-left: 22px;
 }
 
 /* --- CARRUSEL --- */
@@ -228,7 +229,9 @@ header {
 }
 
 .carousel-item {
+
   min-width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   text-align: center;
   padding: 1rem;
@@ -286,7 +289,9 @@ header {
   width: 100%;
   padding: 1rem 2%;
   text-align: left;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  padding-left: 30px;
+  padding-right: 26px;
 }
 
 /* --- MEDIA QUERIES --- */
