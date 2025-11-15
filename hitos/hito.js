@@ -7,6 +7,17 @@ menuToggle.addEventListener("click", () => {
   menu.classList.toggle("show");
 });
 
+// --- Cerrar menú al clicar un enlace (mobile) ---
+const menuLinks = document.querySelectorAll(".menu a");
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    if (menu.classList.contains("show")) {
+      menu.classList.remove("show");
+      menuToggle.classList.remove("open");
+    }
+  });
+});
+
 // --- MAPA (mostrar / ocultar) ---
 const mapToggle = document.querySelector(".map-toggle");
 const mapContent = document.querySelector(".map-content");
@@ -40,8 +51,9 @@ dots.forEach((dot, i) => {
   dot.addEventListener("click", () => {
     showSlide(i);
     clearInterval(interval);
-    interval = setInterval(nextSlide, 4000);
+    interval = setInterval(nextSlide, 6000);
   });
 });
 
+// Inicial
 showSlide(0);

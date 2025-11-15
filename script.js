@@ -130,7 +130,7 @@ if (botonMapa) {
  if (!scrollBtn) return;
 
 
- // Definir orden de secciones (mantener consistencia con tu HTML)
+ // Definir orden de secciones (consistente con tu HTML)
  const sections = [
    document.querySelector(".carrusel"),
    document.querySelector(".ecoparque"),
@@ -146,17 +146,17 @@ if (botonMapa) {
  // Intentamos iniciar el índice en la sección visible actualmente
  let currentSectionIndex = sections.findIndex(sec => {
    const rect = sec.getBoundingClientRect();
-   // Si la parte superior está en la ventana o arriba, consideramos esa sección
    return rect.top >= 0 && rect.top < window.innerHeight / 2;
  });
  if (currentSectionIndex < 0) currentSectionIndex = 0;
 
 
  scrollBtn.addEventListener("click", () => {
-   // calcular index actual de forma más robusta justo antes de avanzar
+   // calcular índice de la sección más centrada actualmente
    const indexNow = sections.findIndex(sec => {
      const rect = sec.getBoundingClientRect();
-     return rect.top >= -10 && rect.top < window.innerHeight / 2;
+     const sectionCenter = rect.top + rect.height / 2;
+     return Math.abs(sectionCenter - window.innerHeight / 2) < rect.height / 2;
    });
    currentSectionIndex = indexNow >= 0 ? indexNow : currentSectionIndex;
 
@@ -167,24 +167,27 @@ if (botonMapa) {
 
    sections[currentSectionIndex].scrollIntoView({
      behavior: "smooth",
-     block: "start"
+     block: "center" // centramos la sección verticalmente
    });
  });
 
 
- // opcional: actualizar currentSectionIndex cuando se hace scroll manualmente
+ // actualizar currentSectionIndex cuando se hace scroll manualmente
  let scrollTimer;
  window.addEventListener("scroll", () => {
    clearTimeout(scrollTimer);
    scrollTimer = setTimeout(() => {
      const idx = sections.findIndex(sec => {
        const rect = sec.getBoundingClientRect();
-       return rect.top >= -10 && rect.top < window.innerHeight / 2;
+       const sectionCenter = rect.top + rect.height / 2;
+       return Math.abs(sectionCenter - window.innerHeight / 2) < rect.height / 2;
      });
      if (idx >= 0) currentSectionIndex = idx;
-   }, 120); // ajustable
+   }, 120);
  }, { passive: true });
 })();
+
+
 // --- Ocultar botón circular al llegar al footer ---
 const scrollBtn = document.querySelector(".scroll-next-btn");
 const footer = document.querySelector(".final-text");
