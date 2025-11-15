@@ -162,7 +162,7 @@ header {
    font-weight: 700;
    color: #1931A8;
    margin-bottom: 1rem;
-   line-height: 1 em;
+   line-height: 0.2 em;
 }
 
 
@@ -227,7 +227,7 @@ color: #fff; /* texto en blanco */
 width: 100%; /* ocupa todo el ancho del body */
 padding: 1rem 1.5rem; /* mismo padding que header y contenido */
 text-align: left; /* igual que el footer anterior */
-font-size: 0.8rem; /* igual que antes */
+font-size: 0.7rem; /* igual que antes */
 }
 
 
@@ -262,4 +262,5 @@ font-size: 0.8rem; /* igual que antes */
        padding-left: 2rem;
        padding-right: 1.6rem;
    }
+   
 }
