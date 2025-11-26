@@ -28,57 +28,76 @@ if (mapToggle) {
   });
 }
 
-// --- CARRUSEL (solo swipe + puntos) ---
+// --- CARRUSEL SIN AUTOMÁTICO + SWIPE iPhone/Android ---
 const track = document.querySelector(".carousel-track");
 const slides = document.querySelectorAll(".carousel-item");
 const dots = document.querySelectorAll(".dot");
+
 let currentIndex = 0;
 
-// Cambiar slide manualmente
 function showSlide(i) {
   track.style.transform = `translateX(-${i * 100}%)`;
   dots.forEach((dot, idx) => dot.classList.toggle("active", idx === i));
   currentIndex = i;
 }
 
-// --- Swipe táctil ---
+dots.forEach((dot, i) => {
+  dot.addEventListener("click", () => showSlide(i));
+});
+
+// --- Swipe táctil compatible con iPhone / Safari ---
 let startX = 0;
+let startY = 0;
 let isDragging = false;
+let isHorizontal = false;
 
 track.addEventListener("touchstart", (e) => {
   startX = e.touches[0].clientX;
+  startY = e.touches[0].clientY;
   isDragging = true;
-});
+  isHorizontal = false;
+}, { passive: true });
 
 track.addEventListener("touchmove", (e) => {
   if (!isDragging) return;
 
-  let touchX = e.touches[0].clientX;
-  let diff = startX - touchX;
+  const touchX = e.touches[0].clientX;
+  const touchY = e.touches[0].clientY;
+  const diffX = touchX - startX;
+  const diffY = touchY - startY;
 
-  if (diff > 50) {
-    // Swipe izquierda → siguiente
+  // Detectar si el movimiento es horizontal (evitar conflicto con scroll vertical)
+  if (!isHorizontal) {
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      isHorizontal = true;
+    } else {
+      isDragging = false;
+      return; 
+    }
+  }
+
+  // Habilitar swipe real en Safari/iPhone
+  e.preventDefault();
+
+  // Siguiente
+  if (diffX < -50) {
     currentIndex = (currentIndex + 1) % slides.length;
     showSlide(currentIndex);
     isDragging = false;
-  } else if (diff < -50) {
-    // Swipe derecha → anterior
+  }
+
+  // Anterior
+  else if (diffX > 50) {
     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     showSlide(currentIndex);
     isDragging = false;
   }
-});
+
+}, { passive: false }); // MUY IMPORTANTE para Safari
 
 track.addEventListener("touchend", () => {
   isDragging = false;
 });
 
-// --- Click en puntos ---
-dots.forEach((dot, i) => {
-  dot.addEventListener("click", () => {
-    showSlide(i);
-  });
-});
-
-// Slide inicial
+// Mostrar slide inicial
 showSlide(0);
