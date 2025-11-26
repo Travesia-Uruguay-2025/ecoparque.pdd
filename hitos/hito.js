@@ -1,3 +1,5 @@
+// ... (Código del Menú y Mapa sin cambios) ...
+
 // --- BOTÓN MENÚ DESPLEGABLE ---
 const menuToggle = document.querySelector(".menu-toggle");
 const menu = document.querySelector(".menu");
@@ -28,11 +30,16 @@ if (mapToggle) {
  });
 }
 
-// --- CARRUSEL (solo swipe + puntos) ---
+// --- CARRUSEL (solo swipe + puntos - MEJORA PARA IOS) ---
 const track = document.querySelector(".carousel-track");
 const slides = document.querySelectorAll(".carousel-item");
 const dots = document.querySelectorAll(".dot");
+const SWIPE_THRESHOLD = 50; // Mínimo de píxeles para contar como swipe
+
 let currentIndex = 0;
+let startX = 0;
+let isDragging = false; // Indica si se inició un arrastre
+let moved = 0; // Almacena el desplazamiento
 
 // Cambiar slide manualmente
 function showSlide(i) {
@@ -41,46 +48,43 @@ function showSlide(i) {
  currentIndex = i;
 }
 
-// --- Swipe táctil (Adaptado para Safari/iOS) ---
-let startX = 0;
-let isDragging = false;
-
 track.addEventListener("touchstart", (e) => {
  startX = e.touches[0].clientX;
  isDragging = true;
+ moved = 0;
 });
 
 track.addEventListener("touchmove", (e) => {
  if (!isDragging) return;
 
- // 🛑 CLAVE: Prevenir el desplazamiento de la página
- e.preventDefault(); 
-  
- let touchX = e.touches[0].clientX;
- let diff = startX - touchX;
+ const touchX = e.touches[0].clientX;
+ moved = startX - touchX;
+ 
+ // **Opcional, pero recomendado en iOS:** Mueve visualmente el track durante el arrastre
+ // Esto ayuda al usuario a sentir que el carrusel es "arrastrable"
+ // track.style.transform = `translateX(calc(-${currentIndex * 100}% - ${moved}px))`; 
 
- // Si la diferencia es mayor a 50 (suficiente arrastre) y no ha terminado el arrastre
- if (isDragging) {
- if (diff > 50) {
- // Swipe izquierda → siguiente
- currentIndex = (currentIndex + 1) % slides.length;
- showSlide(currentIndex);
- isDragging = false; // Detiene el arrastre después de cambiar
- } else if (diff < -50) {
- // Swipe derecha → anterior
- currentIndex = (currentIndex - 1 + slides.length) % slides.length;
- showSlide(currentIndex);
- isDragging = false; // Detiene el arrastre después de cambiar
- }
- }
-  
- // Opcional: Para una mejor experiencia, puedes comentar el código anterior 
-  // y usar este para que el swipe se haga solo al levantar el dedo (touchend).
-  // Sin embargo, el código original ya funciona con los límites de 50px.
+ // No previene el default aquí, deja que iOS decida si es scroll vertical
+ // Si detectamos que el movimiento es claramente horizontal, iOS lo manejará mejor al final.
 });
 
 track.addEventListener("touchend", () => {
+ if (!isDragging) return;
  isDragging = false;
+
+ // Lógica de cambio de slide al terminar el arrastre (touchend)
+ if (moved > SWIPE_THRESHOLD) {
+ // Deslizó hacia la izquierda (Next)
+ currentIndex = (currentIndex + 1) % slides.length;
+ } else if (moved < -SWIPE_THRESHOLD) {
+ // Deslizó hacia la derecha (Previous)
+ currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+ }
+ 
+ // Muestra el slide final basado en el cambio o si no hubo suficiente movimiento
+ showSlide(currentIndex);
+ 
+ moved = 0; // Reinicia el desplazamiento para el siguiente swipe
 });
 
 // --- Click en puntos ---
