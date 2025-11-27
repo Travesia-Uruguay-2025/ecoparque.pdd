@@ -1,59 +1,69 @@
-// --- CARRUSEL (solo swipe + puntos) ---
-const track = document.querySelector(".carousel-track");
-const slides = document.querySelectorAll(".carousel-item");
-const dots = document.querySelectorAll(".dot");
-let currentIndex = 0;
+// --- BOTÓN MENÚ DESPLEGABLE ---
+const menuToggle = document.querySelector(".menu-toggle");
+const menu = document.querySelector(".menu");
 
-// Mostrar slide
-function showSlide(i) {
-  track.style.transform = `translateX(-${i * 100}%)`;
-  dots.forEach((dot, idx) => dot.classList.toggle("active", idx === i));
-  currentIndex = i;
-}
-
-// --- SWIPE COMPATIBLE CON SAFARI/IPHONE ---
-let startX = 0;
-let isPointerDown = false;
-
-// Usamos pointer events para compatibilidad universal
-track.addEventListener("pointerdown", (e) => {
-  isPointerDown = true;
-  startX = e.clientX;
+menuToggle.addEventListener("click", () => {
+  menuToggle.classList.toggle("open");
+  menu.classList.toggle("show");
 });
 
-track.addEventListener("pointermove", (e) => {
-  if (!isPointerDown) return;
-
-  const diff = startX - e.clientX;
-
-  if (diff > 50) {
-    // Swipe izquierda → siguiente
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
-    isPointerDown = false;
-  } else if (diff < -50) {
-    // Swipe derecha → anterior
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(currentIndex);
-    isPointerDown = false;
-  }
-});
-
-track.addEventListener("pointerup", () => {
-  isPointerDown = false;
-});
-
-// Por seguridad para Safari
-track.addEventListener("touchmove", (e) => {
-  e.preventDefault();
-}, { passive: false });
-
-// --- CLIC EN PUNTOS ---
-dots.forEach((dot, i) => {
-  dot.addEventListener("click", () => {
-    showSlide(i);
+// --- Cerrar menú al clicar un enlace ---
+const menuLinks = document.querySelectorAll(".menu a");
+menuLinks.forEach(link => {
+  link.addEventListener("click", () => {
+    if (menu.classList.contains("show")) {
+      menu.classList.remove("show");
+      menuToggle.classList.remove("open");
+    }
   });
 });
 
+// --- MAPA (mostrar / ocultar con animación) ---
+const mapToggle = document.querySelector(".map-toggle");
+const mapContent = document.querySelector(".map-content");
+
+if (mapToggle) {
+  mapToggle.addEventListener("click", () => {
+    mapContent.classList.toggle("open");
+  });
+}
+
+/* -------------------------------------------------
+   NUEVO CARRUSEL MEMORIAS (con flechas + puntos)
+   ------------------------------------------------- */
+
+const slidesMem = document.querySelectorAll(".memories-slide");
+const dotsMem = document.querySelectorAll(".dots .dot");
+const btnLeft = document.querySelector(".left-btn");
+const btnRight = document.querySelector(".right-btn");
+
+let memIndex = 0;
+
+function showMemory(i) {
+  slidesMem.forEach((s, idx) => {
+    s.classList.toggle("active", idx === i);
+  });
+
+  dotsMem.forEach((d, idx) => {
+    d.classList.toggle("active", idx === i);
+  });
+
+  memIndex = i;
+}
+
+if (btnRight) {
+  btnRight.addEventListener("click", () => {
+    memIndex = (memIndex + 1) % slidesMem.length;
+    showMemory(memIndex);
+  });
+}
+
+if (btnLeft) {
+  btnLeft.addEventListener("click", () => {
+    memIndex = (memIndex - 1 + slidesMem.length) % slidesMem.length;
+    showMemory(memIndex);
+  });
+}
+
 // Slide inicial
-showSlide(0);
+showMemory(0);

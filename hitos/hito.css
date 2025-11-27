@@ -158,7 +158,16 @@ header {
 }
 
 .map-content {
-  display: none;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  margin-top: 0;
+  transition: max-height 0.45s ease, opacity 0.45s ease, margin-top 0.45s ease;
+}
+
+.map-content.open {
+  max-height: 600px; /* valor grande para permitir su altura real */
+  opacity: 1;
   margin-top: 1rem;
 }
 
@@ -280,7 +289,7 @@ header {
 }
 
 .carousel-indicators .dot.active {
-  background: #1931A8;
+  background: #EBBE0C;
 }
 
 /* --- FINAL TEXT --- */
@@ -338,4 +347,112 @@ header {
   .ubicacion-texto {
     font-size: 1rem;
   }
+}
+
+/* --- NUEVO DISEÑO MEMORIAS --- */
+
+.memories {
+  margin-top: 2rem;
+}
+
+.memories-box-flora {
+  background: #fbf2ce;
+  padding: 2rem 1.5rem;
+  min-height: 180px;
+}
+
+.memories-box-fauna {
+  background: #dde0f2;
+  padding: 2rem 1.5rem;
+  min-height: 180px;
+}
+
+.memories-slide {
+  display: none;
+  text-align: center;
+}
+
+.memories-slide.active {
+  display: block;
+}
+
+.memories-slide blockquote {
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-style: italic;
+  color: #000;
+}
+
+.memories-slide .author {
+  display: block;
+  margin-top: 1rem;
+  text-align: right;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+/* --- Flechas y puntos --- */
+
+.memories-controls {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.arrow-btn-flora {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #EBBE0C;
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+}
+
+.arrow-btn-fauna {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: #1931A8;
+  color: white;
+  font-size: 1.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+}
+
+.dots {
+  display: flex;
+  gap: 10px;
+}
+
+.dots .dot {
+  width: 12px;
+  height: 12px;
+  background: #CFCFCF;
+  border-radius: 50%;
+}
+
+.dots .dot.active-flora {
+  background: #EBBE0C;
+}
+
+.dots .dot.active-fauna {
+  background: #1931A8;
+}
+
+.flecha {
+  font-size: 36px; /* ← Aumenta este valor */
+  color: white;
+  line-height: 1;
 }
