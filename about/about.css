@@ -273,22 +273,23 @@ header {
 
 /* --- 5. PIE DE PÁGINA --- */
 .final-text {
-font-family: DM Sans;
-margin-top: 80px;
-background: #000; /* igual que el header */
-color: #fff; /* texto en blanco */
-width: 100%; /* ocupa todo el ancho del body */
-padding: 1rem 1.5rem; /* mismo padding que header y contenido */
-text-align: left; /* igual que el footer anterior */
-font-size: 0.7rem; /* igual que antes */
+  font-family: DM Sans;
+  margin-top: 80px;
+  background: #000;
+  color: #fff;
+  width: 100%;
+  padding: 1rem 2%;
+  text-align: left;
+  font-size: 0.8rem;
+  padding-left: 30px;
+  padding-right: 26px;
 }
 
-
-
-
 .final-text p {
-  max-width: 700px;
-  margin: 0 auto;
+   max-width: 700px;
+   margin: 0 auto;
+   font-size: 12px;
+   color: #fff;
 }
 
 
@@ -328,4 +329,9 @@ font-size: 0.7rem; /* igual que antes */
       padding-right: 1.6rem;
   }
  
+}
+
+.link-footer {
+   text-decoration: underline;
+   color: #fff;
 }

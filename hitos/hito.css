@@ -465,3 +465,8 @@ header {
   color: white;
   line-height: 1;
 }
+
+.link-footer {
+   text-decoration: underline;
+   color: #fff;
+}
