@@ -44,8 +44,13 @@ function showMemory(i) {
     s.classList.toggle("active", idx === i);
   });
 
+  // Detectar tipo de hito (flora o fauna)
+  const isFlora = document.querySelector(".memories-box-flora");
+  const activeClass = isFlora ? "active-flora" : "active-fauna";
+
   dotsMem.forEach((d, idx) => {
-    d.classList.toggle("active", idx === i);
+    d.classList.remove("active-flora", "active-fauna");
+    if (idx === i) d.classList.add(activeClass);
   });
 
   memIndex = i;

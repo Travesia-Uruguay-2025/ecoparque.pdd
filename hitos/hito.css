@@ -171,14 +171,23 @@ header {
   margin-top: 1rem;
 }
 
-.mapa,
 .hibiscodebañado {
-  width: 100%;
+  width: 325px;
   height: auto;
   border-radius: 10px;
   display: block;
   margin: 1.5rem auto;
   object-fit: cover;
+}
+
+.mapa {
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  object-fit: cover;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .content {

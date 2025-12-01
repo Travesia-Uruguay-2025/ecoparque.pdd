@@ -381,9 +381,11 @@ font-size: 12px; /* igual que antes */
 
   /* Aumentamos el tamaño real de la imagen */
   .hito-item img {
-      width: 150px;
-      height: 150px;
-  }
+    width: 100%;
+    height: auto;
+    display: block;
+    max-width: 150px;
+}
 
 
 
