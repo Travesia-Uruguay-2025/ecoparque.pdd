@@ -54,8 +54,10 @@ body {
 
 
 .logo {
-   height: 50px;
-   object-fit: contain;
+  height: 44px;
+  object-fit: contain;
+  margin-left: 10px;
+  margin-top: 5px;
 }
 /* --- Botón menú hamburguesa --- */
 .menu-btn {
@@ -107,7 +109,7 @@ body {
    right: 20px;
    display: flex;
    flex-direction: column;
-   background: #111;
+   background: #000;
    overflow: hidden;
    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
    transform-origin: top right;
@@ -143,11 +145,6 @@ body {
    height: 0.5px;
    background: #FFD221;
    margin: 0.7rem auto 0;
-}
-
-
-.menu a:last-child::after {
-   display: none;
 }
 
 

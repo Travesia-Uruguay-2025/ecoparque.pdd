@@ -33,30 +33,35 @@ header {
 
 /* --- BOTÓN HAMBURGUESA --- */
 .menu-toggle {
-  width: 34px;
-  height: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1001;
-  margin-right: 15px;
+   width: 44px;
+   height: 36px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   background: none;
+   border: none;
+   cursor: pointer;
+   padding: 7px 0;
+   z-index: 30;
+   margin-right: 9.1px;
+}
+
+.menu-toggle span:nth-child(3) {
+   height: 3.5px;   /* grosor que quieras */
 }
 
 .menu-toggle span {
-  display: block;
-  width: 100%;
-  height: 4px;
-  background-color: white;
-  border-radius: 4px;
-  transition: transform 0.35s ease, opacity 0.35s ease;
+   display: block;
+   width: 32px;
+   height: 3px; /* altura de cada barra */
+   background-color: white;
+   border-radius: 2px;
+   transition: transform 0.3s ease, opacity 0.25s ease;
 }
 
 /* Animación hamburguesa → X */
 .menu-toggle.open span:nth-child(1) {
-  transform: translateY(10px) rotate(45deg);
+  transform: translateY(9px) rotate(45deg);
 }
 
 .menu-toggle.open span:nth-child(2) {
@@ -64,7 +69,7 @@ header {
 }
 
 .menu-toggle.open span:nth-child(3) {
-  transform: translateY(-10px) rotate(-45deg);
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 /* --- MENÚ DESPLEGABLE --- */
@@ -210,6 +215,7 @@ header {
   font-size: 2.5rem;
   font-weight: 800;
   margin-left: auto;
+  margin-right: 15px;
 }
 
 .content p {

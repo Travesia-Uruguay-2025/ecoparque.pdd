@@ -5,7 +5,7 @@ body {
   margin: 0;
   padding: 0;
   background-color: #fdfdfd;
-  color: #333;
+  color: #000;
 }
 
 
@@ -50,8 +50,10 @@ header {
 
 
 .logo-img {
-  height: 50px;   /* tamaño equilibrado */
-  width: auto;
+  height: 44px;
+  object-fit: contain;
+  margin-left: 10px;
+  margin-top: 5px;
 }
 
 
@@ -59,30 +61,37 @@ header {
 
 /* --- BOTÓN HAMBURGUESA --- */
 .menu-toggle {
-  position: absolute;   /* ← aquí está la clave */
-  right: 1rem;          /* mueve hacia la derecha (ajusta este valor) */
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 5px;
-  z-index: 30;
+   width: 44px;
+   height: 36px;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-between;
+   background: none;
+   border: none;
+   cursor: pointer;
+   padding: 7px 0;
+   z-index: 30;
 }
 
+.menu-toggle span:nth-child(1) {
+   height: 3.5px;   /* grosor que quieras */
+}
 
+.menu-toggle span:nth-child(2) {
+   height: 3.2px;   /* grosor que quieras */
+}
 
+.menu-toggle span:nth-child(3) {
+   height: 3.5px;   /* grosor que quieras */
+}
 
 .menu-toggle span {
-  display: block;
-  width: 28px;
-  height: 3px;
-  background-color: #fff;
-  border-radius: 5px;
-  transition: all 0.3s ease;
+   display: block;
+   width: 32px;
+   height: 3px; /* altura de cada barra */
+   background-color: white;
+   border-radius: 2px;
+   transition: transform 0.3s ease, opacity 0.25s ease;
 }
 
 
@@ -90,13 +99,13 @@ header {
 
 /* Animación a cruz al abrir */
 .menu-toggle.open span:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
+  transform: translateY(9px) rotate(45deg);
 }
 .menu-toggle.open span:nth-child(2) {
   opacity: 0;
 }
 .menu-toggle.open span:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+  transform: translateY(-9px) rotate(-45deg);
 }
 
 
@@ -110,7 +119,7 @@ header {
   right: 1.5rem;
   display: flex;
   flex-direction: column;
-  background: #111;
+  background: #000;
   border-radius: none;
   overflow: hidden;
   box-shadow: 0 8px 25px rgba(0,0,0,0.35);
@@ -198,8 +207,6 @@ header {
   font-size: 2.5rem;
   font-weight: 700;
   color: #1931A8;
-  margin-bottom: 1rem;
-  line-height: 0.2 em;
 }
 
 
@@ -235,8 +242,7 @@ header {
   font-size: 1.7rem;
   font-weight: 600;
   color: #000000;
-  margin-top: 1 rem;    /* quita el espacio fantasma */
-  margin-bottom: 0.3rem;
+  margin-bottom: 5rem;
 }
 
 
